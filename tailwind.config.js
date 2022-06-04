@@ -5,6 +5,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height',
+      },
       colors: {
         nord0: 'var(--nord0)',
         nord1: 'var(--nord1)',

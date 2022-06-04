@@ -1,8 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useGetTokenMutation } from '../app/services/account';
 import { FcGoogle } from 'react-icons/fc';
+import { selectCurrentUser } from '../features/account/accountSlice';
+import { useAppSelector } from '../hooks/store';
 
 const SignInPage: React.FC = () => {
   const [getToken, { isUninitialized }] = useGetTokenMutation()
@@ -17,18 +19,20 @@ const SignInPage: React.FC = () => {
     }
   }
 
-  const form = (
-    <form className='shadow-md'
-      onSubmit={handleSubmit(onSubmit)}
-    >
+  const form =
+    <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor='email'>Your Email</label>
-      <input placeholder='example@gmail.com' id='email' {...register('email', { required: 'Email required.' })} type='email' />
-      <input type='submit' />
+      <input
+        id='email'
+        type='email'
+        {...register('email', { required: true })}
+      />
+      <input className='submit' type='submit' />
     </form>
-  )
+
 
   const google = (
-    <a className='flex flex-ro items-center gap-2 text-nord10 text-lg font-bold bg-white dark:bg-nord0 shadow-md p-2 rounded-sm'
+    <a className='flex flex-row items-center gap-2 text-nord9 hover:text-nord10 text-lg font-bold bg-white dark:bg-nord0 shadow-md p-2 rounded-sm'
       href={`${process.env.REACT_APP_API_HOST}/account/signin/google`}
     >
       <FcGoogle size={24} />
@@ -36,28 +40,44 @@ const SignInPage: React.FC = () => {
     </a>
   )
 
+  let content;
+
+  if (isUninitialized) {
+    content = (
+      <>
+        <h2>Sign in with email</h2>
+        <div className='shadow-md p-8 bg-white dark:bg-nord0 rounded-sm'>
+          {form}
+        </div>
+        <span className='opacity-90'>or</span>
+        {google}
+        <p className='text-center opacity-90'>If you have no account, it will be created automatically.</p>
+      </>
+    )
+  } else {
+    content = (
+      <div className='bg-white dark:bg-nord0 p-4 rounded-sm flex flex-col items-center gap-4 shadow-md'>
+        <p>Check your inbox.</p>
+        <p className='text-center'>
+          Click the link we sent to <span className='font-bold'>{watch('email')}</span> to sign in.
+        </p>
+        <button className='submit'
+          onClick={() => navigate('/', { replace: true })}
+        >
+          OK
+        </button>
+      </div>
+    )
+  }
+
+  const user = useAppSelector(selectCurrentUser)
+  if (user) {
+    return <Navigate to='/' replace />
+  }
+
   return (
     <div className='grow p-8 flex flex-col items-center justify-center gap-6'>
-      {isUninitialized
-        ?
-        <>
-          <h2>Sign in with email</h2>
-          {form}
-          <span className='opacity-90'>or</span>
-          {google}
-          <p className='text-center opacity-90'>If you have no account, it will be created automatically.</p>
-        </>
-        :
-        <div className='bg-nord0 p-4 rounded-sm flex flex-col items-center gap-4 shadow-md'>
-          <p>Check your inbox.</p>
-          <p className='text-center'>Click the link we sent to <span className='font-bold'>{watch('email')}</span> to sign in.</p>
-          <button className='p-2 px-4 bg-nord10 rounded-sm'
-            onClick={() => navigate('/', { replace: true })}
-          >
-            OK
-          </button>
-        </div>
-      }
+      {content}
     </div>
   )
 }

@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply bg-slate-50 dark:bg-[#242933] text-nord3 dark:text-nord6 transition-colors h-full;
+    @apply h-full bg-slate-50 dark:bg-[#242933] text-nord3 dark:text-nord6 transition-colors;
   }
 
   #root {
@@ -47,15 +47,17 @@
   }
 
   form {
-    @apply flex flex-col items-center gap-4 p-4 rounded-sm bg-white dark:bg-nord0;
+    @apply flex flex-col gap-4 items-center;
   }
 
   input {
-    @apply bg-inherit text-nord3 dark:text-white rounded-sm p-0.5 outline-none border-b-2 focus:border-nord10;
+    @apply bg-transparent border-b-[2px] border-nord6 hover:border-nord9 focus:border-nord9 dark:hover:border-nord9 dark:focus:border-nord9 dark:border-nord1 p-1 outline-none;
   }
+}
 
-  input[type=submit] {
-    @apply bg-nord10 px-2 py-1 rounded-sm text-white dark:text-[#242933] border-none font-medium cursor-pointer;
+@layer components {
+  .submit {
+    @apply bg-nord9 hover:bg-nord10 py-1 px-4 border-none rounded-sm text-white dark:text-nord0 font-semibold tracking-wider cursor-pointer;
   }
 }
 
