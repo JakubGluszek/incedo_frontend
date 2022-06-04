@@ -22,22 +22,41 @@
 }
 
 @layer base {
-  body {
-    @apply bg-[#fff] dark:bg-[#242933];
-    @apply text-nord3 dark:text-nord6;
+  html {
+    @apply h-full;
   }
-}
 
-h1 {
-  @apply text-3xl;
-}
+  body {
+    @apply bg-slate-50 dark:bg-[#242933] text-nord3 dark:text-nord6 transition-colors h-full;
+  }
 
-h2 {
-  @apply text-2xl;
-}
+  #root {
+    @apply h-full;
+  }
 
-h3 {
-  @apply text-xl;
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  form {
+    @apply flex flex-col items-center gap-4 p-4 rounded-sm bg-white dark:bg-nord0;
+  }
+
+  input {
+    @apply bg-inherit text-nord3 dark:text-white rounded-sm p-0.5 outline-none border-b-2 focus:border-nord10;
+  }
+
+  input[type=submit] {
+    @apply bg-nord10 px-2 py-1 rounded-sm text-white dark:text-[#242933] border-none font-medium cursor-pointer;
+  }
 }
 
 * {

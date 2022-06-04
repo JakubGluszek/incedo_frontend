@@ -4,8 +4,10 @@ import { selectCurrentUser } from '../features/account/accountSlice';
 
 const IndexPage: React.FC = () => {
   const user = useAppSelector(selectCurrentUser)
-
+  
   if (!user) return <PublicIndexPage />
+  
+  
 
   return (
     <div>
@@ -16,9 +18,7 @@ const IndexPage: React.FC = () => {
 
 const PublicIndexPage: React.FC = () => {
   return (
-    <div>
-      <h1>Public index page</h1>
-    </div>
+    <h1>Public index page</h1>
   )
 }
 

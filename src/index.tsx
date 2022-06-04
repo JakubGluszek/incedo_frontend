@@ -11,7 +11,7 @@ const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
-  <ThemeProvider initialTheme='light'>
+  <ThemeProvider>
     <Provider store={store}>
       <Router>
         <Routes>

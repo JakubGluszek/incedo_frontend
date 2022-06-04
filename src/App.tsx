@@ -7,13 +7,12 @@ import SignInPage from './pages/SignInPage';
 import Authenticate from './features/account/Authenticate';
 import EmailCallback from './features/account/EmailCallback';
 import AuthRequired from './features/account/AuthRequired';
-import PublicLayout from './components/PublicLayout';
 
 const App: React.FC = () => {
   return (
     <Routes>
       <Route path='/' element={<Authenticate />}>
-        
+
         {/* public & protected */}
         <Route index element={<IndexPage />} />
 
@@ -21,16 +20,14 @@ const App: React.FC = () => {
         <Route element={<AuthRequired />}>
           <Route path="protected" element={<h1>Protected</h1>} />
         </Route>
-      </Route>
 
-      {/* public */}
-      <Route element={<PublicLayout />}>
+        {/* public */}
         <Route path="signin" element={<SignInPage />} />
         <Route path="callback">
           <Route path="email" element={<EmailCallback />} />
         </Route>
-      </Route>
 
+      </Route>
     </Routes>
   );
 }

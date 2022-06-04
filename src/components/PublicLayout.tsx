@@ -1,16 +1,27 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import ToggleTheme from './ToggleTheme';
 
-// Layout for simple public pages like: signin, email callback..
-const PublicLayout: React.FC = () => {
+interface Props {
+  children: React.ReactNode
+}
+
+const PublicLayout: React.FC<Props> = ({ children }) => {
   return (
-    <div className='w-screen h-screen flex flex-col'>
-      <header className='w-full h-20 flex flex-row items-center justify-center'>
-        <h1>Incedo</h1>
+    <div className='flex flex-col min-h-screen'>
+      <div className='h-20'></div>
+      <header className='w-screen h-16 fixed top-0'>
+        <div className='px-6 w-full h-full flex flex-row items-center justify-between'>
+          <Link to='/' className='text-2xl font-bold tracking-widest'>Incedo</Link>
+          <nav className='flex text-lg gap-6'>
+            <Link to='/signin'>Sign in</Link>
+            <ToggleTheme />
+          </nav>
+        </div>
       </header>
-      <div className='w-full grow flex items-center justify-center'>
-        <Outlet />
-      </div>
+      <main className='grow flex flex-col'>
+        {children}
+      </main>
     </div>
   )
 }

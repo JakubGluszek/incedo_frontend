@@ -32,17 +32,13 @@ const EmailCallback: React.FC = () => {
   let content;
 
   if (isLoading) {
-    content = <h1>Fetching</h1>
+    content = <h1>fetching</h1>
   } else {
     content = <EnterEmail />
   }
   // display appropriate content based on request status
 
-  return (
-    <div>
-      {content}
-    </div>
-  )
+  return content;
 }
 
 const EnterEmail: React.FC = () => {
@@ -55,23 +51,26 @@ const EnterEmail: React.FC = () => {
   }
 
   return (
-    isUninitialized
-      ?
-      <div>
-        <p>Your sign in link has expired</p>
-        <>Enter the email address associated with your account, and we'll send a new magic link to your inbox.</>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor='email'>Your email</label>
-          <input id='email' type='email' {...register('email', { required: 'Email required.' })} />
-          <input type='submit' />
-        </form>
-      </div>
-      :
-      <div>
-        <p>Check your inbox</p>
-        <p>An email has been sent to {watch('email')}</p>
-        <button onClick={() => navigate('/')}>OK</button>
-      </div>
+    <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center'>
+      {isUninitialized
+        ?
+        <>
+          <h3>Your sign in link has expired</h3>
+          <p>Enter the email address associated with your account, and we'll send a new magic link to your inbox.</p>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor='email'>Your email</label>
+            <input id='email' type='email' {...register('email', { required: 'Email required.' })} />
+            <input type='submit' />
+          </form>
+        </>
+        :
+        <div className='bg-nord0 p-4 rounded-sm flex flex-col gap-4 items-center'>
+          <p>Check your inbox</p>
+          <p>An email has been sent to {watch('email')}</p>
+          <button className='w-fit bg-nord10 p-2 px-4 rounded-sm' onClick={() => navigate('/', { replace: true })}>OK</button>
+        </div>
+      }
+    </div>
   )
 }
 

@@ -23,7 +23,7 @@ interface Props {
 
 export const ThemeContext = createContext<Props | null>(null);
 
-export const ThemeProvider = ({ initialTheme, children }: { initialTheme: string, children: React.ReactNode }) => {
+export const ThemeProvider = ({ initialTheme, children }: { initialTheme?: string, children: React.ReactNode }) => {
   const [theme, setTheme] = useState(getInitialTheme);
 
   const rawSetTheme = (rawTheme: string) => {
@@ -39,7 +39,6 @@ export const ThemeProvider = ({ initialTheme, children }: { initialTheme: string
   if (initialTheme) {
     rawSetTheme(initialTheme);
   }
-
   useEffect(() => {
     rawSetTheme(theme);
   }, [theme]);
