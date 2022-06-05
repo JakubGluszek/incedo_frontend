@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply h-full bg-slate-50 dark:bg-[#242933] text-nord3 dark:text-nord6 transition-colors;
+    @apply h-full bg-slate-100 dark:bg-[#242933] text-nord3 dark:text-nord6;
   }
 
   #root {
@@ -52,6 +52,16 @@
 
   input {
     @apply bg-transparent border-b-[2px] border-nord6 hover:border-nord9 focus:border-nord9 dark:hover:border-nord9 dark:focus:border-nord9 dark:border-nord1 p-1 outline-none;
+  }
+
+  button {
+    @apply p-1 rounded-sm hover:bg-white dark:hover:bg-nord0;
+  }
+
+  a,
+  input,
+  button {
+    @apply transition-colors duration-200;
   }
 }
 

@@ -13,13 +13,20 @@ const ToggleTheme: React.FC = () => {
     }
   }
 
+  let content;
+
+  if (theme === 'dark') {
+    content = <MdLightMode size={24} />
+  } else {
+    content = <MdDarkMode size={24} />
+  }
+
   return (
-    <button name='Toggle Theme' onClick={() => toggle()}>
-      {
-        theme === 'dark'
-          ? <MdLightMode size={24} />
-          : <MdDarkMode size={24} />
-      }
+    <button className='p-2 rounded-md'
+      name='Toggle Theme'
+      onClick={() => toggle()}
+    >
+      {content}
     </button>
   )
 }
