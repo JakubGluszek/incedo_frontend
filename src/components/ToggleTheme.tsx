@@ -22,7 +22,7 @@ const ToggleTheme: React.FC = () => {
   }
 
   return (
-    <button className='p-2 rounded-md'
+    <button className='btn-nav'
       name='Toggle Theme'
       onClick={() => toggle()}
     >

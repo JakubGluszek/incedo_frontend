@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
+import { MdEmail } from 'react-icons/md';
 
 // Get token from ?token query
 // Try to sign in using token
@@ -14,7 +15,7 @@ const EmailCallback: React.FC = () => {
   const [params] = useSearchParams()
   const [signIn, { isLoading }] = useSignInMutation()
   const navigate = useNavigate()
-  
+
   const signin = useCallback(async () => {
     const token = params.get("token")
     if (token) {
@@ -26,13 +27,13 @@ const EmailCallback: React.FC = () => {
       }
     }
   }, [navigate, params, signIn])
-  
+
   useEffect(() => {
     signin()
   }, [signin])
-  
+
   let content;
-  
+
   if (isLoading) {
     content = <h1>fetching</h1>
   } else {
@@ -65,23 +66,30 @@ const EnterEmail: React.FC = () => {
         <p>Enter the email address associated with your account, and we'll send a new magic link to your inbox.</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor='email'>Your email</label>
-          <input id='email' type='email' {...register('email', { required: 'Email required.' })} />
+          <div className='relative flex flex-row items-center'>
+            <MdEmail size={24} className='absolute' />
+            <input className='pl-8'
+              id='email'
+              type='email'
+              {...register('email', { required: true })}
+            />
+          </div>
           <input className='submit' type='submit' />
         </form>
       </>
     )
   } else {
     content = (
-      <div className='bg-nord0 p-4 rounded-sm flex flex-col gap-4 items-center'>
+      <div className='bg-nord0 p-4 rounded-md flex flex-col gap-4 items-center'>
         <p>Check your inbox</p>
         <p>An email has been sent to {watch('email')}</p>
-        <button className='w-fit bg-nord10 p-2 px-4 rounded-sm' onClick={() => navigate('/', { replace: true })}>OK</button>
+        <button className='submit' onClick={() => navigate('/', { replace: true })}>OK</button>
       </div>
     )
   }
 
   return (
-    <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center'>
+    <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center lg:text-lg'>
       {content}
     </div>
   )
