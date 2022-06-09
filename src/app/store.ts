@@ -1,12 +1,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import accountReducer from '../features/account/accountSlice';
+import dailyNoteReducer from '../features/dailyNote/dailyNoteSlice';
 
 import { api } from './services/api';
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    account: accountReducer
+    account: accountReducer,
+    dailyNote: dailyNoteReducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(api.middleware),
   devTools: true

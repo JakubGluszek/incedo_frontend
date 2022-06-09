@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../hooks/store';
 import { selectCurrentUser } from '../features/account/accountSlice';
+import DailyNote from '../features/dailyNote/DailyNote';
 
 const IndexPage: React.FC = () => {
   const user = useAppSelector(selectCurrentUser)
@@ -8,8 +9,10 @@ const IndexPage: React.FC = () => {
   if (!user) return <PublicIndexPage />
 
   return (
-    <div className='max-w-screen-lg w-full mx-auto p-6'>
-      <h1>Authenticated Index Page</h1>
+    <div className='grow flex flex-col gap-4'>
+      <div className='w-full h-fit card'>
+        <DailyNote />
+      </div>
     </div>
   )
 }

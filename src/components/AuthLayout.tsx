@@ -24,20 +24,23 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
           <ToggleTheme />
         </nav>
       </div>
+      {/* */}
     </header>
   )
 
   return (
-    <div className='flex flex-col min-h-screen'>
-      <div className='h-20'>{/* spacing because header is fixed */}</div>
-      {header}
-      <main className='grow flex flex-col'>
-        {children}
-      </main>
+    <>
+      <div className='flex flex-col min-h-screen'>
+        <div className='h-16'>{/* spacing because header is fixed */}</div>
+        {header}
+        <main className='grow flex flex-col max-w-screen-md w-full mx-auto p-6'>
+          {children}
+        </main>
+      </div>
       <footer className='flex flex-row items-center justify-center h-10'>
         <span>© 2022 Incedo, Inc.</span>
       </footer>
-    </div>
+    </>
   )
 }
 
