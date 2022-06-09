@@ -18,7 +18,7 @@ export const accountApi = api.injectEndpoints({
       })
     }),
     getAccount: builder.query<IUser, any>({
-      query: () => '/account'
+      query: () => '/account/user'
     })
   })
 })

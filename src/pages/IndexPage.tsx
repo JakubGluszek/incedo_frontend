@@ -8,7 +8,7 @@ const IndexPage: React.FC = () => {
   if (!user) return <PublicIndexPage />
 
   return (
-    <div>
+    <div className='max-w-screen-lg w-full mx-auto p-6'>
       <h1>Authenticated Index Page</h1>
     </div>
   )
