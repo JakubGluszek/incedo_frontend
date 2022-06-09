@@ -37,7 +37,7 @@ const SignInPage: React.FC = () => {
 
   const google = (
     <a className='flex flex-row items-center gap-2 text-nord9 hover:text-nord10 text-lg font-bold bg-white dark:bg-nord0 shadow-md p-2 rounded-md'
-      href={`${process.env.REACT_APP_API_HOST}/account/signin/google`}
+      href={`${process.env.REACT_APP_API_HOST}/account/auth/signin/google`}
     >
       <FcGoogle size={24} />
       <span>Sign in with google</span>

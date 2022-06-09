@@ -16,7 +16,7 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
 
   if (result?.error?.status === 403) {
     // access token is old, try to refresh
-    const refreshResult = await baseQuery({ url: '/account/refresh', method: 'POST' }, api, extraOptions)
+    const refreshResult = await baseQuery({ url: '/account/auth/refresh', method: 'POST' }, api, extraOptions)
     if (refreshResult?.meta?.response?.status === 200) {
       // retry original query with new cookies
       result = await baseQuery(args, api, extraOptions)

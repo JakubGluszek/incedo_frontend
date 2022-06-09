@@ -5,14 +5,14 @@ export const accountApi = api.injectEndpoints({
   endpoints: builder => ({
     signIn: builder.mutation<IUser, ISignIn>({
       query: (credentials) => ({
-        url: '/account/signin',
+        url: '/account/auth/signin',
         method: 'POST',
         body: { ...credentials }
       })
     }),
     getToken: builder.mutation<any, IGetToken>({
       query: (credentials) => ({
-        url: '/account/token',
+        url: '/account/auth/token',
         method: 'POST',
         body: { ...credentials }
       })
