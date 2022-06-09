@@ -68,6 +68,9 @@
   .btn-nav {
     @apply p-2 rounded-md hover:bg-white dark:hover:bg-nord0;
   }
+  .card {
+    @apply bg-white dark:bg-nord0 shadow-sm p-4 rounded-md;
+  }
 }
 
 * {

@@ -21,7 +21,7 @@ const SignInPage: React.FC = () => {
   }
 
   const form =
-    <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor='email'>Your Email</label>
       <div className='relative flex flex-row items-center'>
         <MdEmail size={24} className='absolute' />
