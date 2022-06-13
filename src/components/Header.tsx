@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ToggleTheme from './ToggleTheme';
 
 interface Props {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const Header: React.FC<Props> = ({ children }) => {

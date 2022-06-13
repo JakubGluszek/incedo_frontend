@@ -2,8 +2,8 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { useGetAccountQuery } from '../../app/services/account';
-import AuthLayout from '../../components/AuthLayout';
-import PublicLayout from '../../components/PublicLayout';
+import AuthLayout from '../../components/layouts/AuthLayout';
+import PublicLayout from '../../components/layouts/PublicLayout';
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
 

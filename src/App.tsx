@@ -1,13 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import IndexPage from './pages/IndexPage';
-import SignInPage from './pages/SignInPage';
-
 import Authenticate from './features/account/Authenticate';
 import EmailCallback from './features/account/EmailCallback';
 import AuthRequired from './features/account/AuthRequired';
-import TodayPage from './pages/TodayPage';
+import SignInPage from './pages/SignInPage';
 
 const App: React.FC = () => {
   return (
@@ -15,11 +12,11 @@ const App: React.FC = () => {
       <Route path='/' element={<Authenticate />}>
 
         {/* public & protected */}
-        <Route index element={<IndexPage />} />
+        <Route index element={<h1>Home</h1>} />
 
         {/* protected */}
         <Route element={<AuthRequired />}>
-          <Route path="today" element={<TodayPage />} />
+          <Route element={<h1>Protected</h1>} />
         </Route>
 
         {/* public */}
