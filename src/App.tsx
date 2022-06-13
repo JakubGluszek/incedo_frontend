@@ -7,6 +7,7 @@ import SignInPage from './pages/SignInPage';
 import Authenticate from './features/account/Authenticate';
 import EmailCallback from './features/account/EmailCallback';
 import AuthRequired from './features/account/AuthRequired';
+import TodayPage from './pages/TodayPage';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const App: React.FC = () => {
 
         {/* protected */}
         <Route element={<AuthRequired />}>
-          <Route path="protected" element={<h1>Protected</h1>} />
+          <Route path="today" element={<TodayPage />} />
         </Route>
 
         {/* public */}

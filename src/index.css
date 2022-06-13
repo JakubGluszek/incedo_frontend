@@ -76,3 +76,9 @@
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* code mirror custom style */
+.ͼ1.cm-editor,
+.cm-focued {
+  outline: none !important;
+}

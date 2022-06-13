@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../hooks/store';
 import { selectCurrentUser } from '../features/account/accountSlice';
-import DailyNote from '../features/dailyNote/DailyNote';
 
 const IndexPage: React.FC = () => {
   const user = useAppSelector(selectCurrentUser)
@@ -10,9 +9,7 @@ const IndexPage: React.FC = () => {
 
   return (
     <div className='grow flex flex-col gap-4'>
-      <div className='w-full h-fit card'>
-        <DailyNote />
-      </div>
+      <h1>Account Dashboard etc.</h1>
     </div>
   )
 }
