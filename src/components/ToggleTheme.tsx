@@ -16,9 +16,9 @@ const ToggleTheme: React.FC = () => {
   let content;
 
   if (theme === 'dark') {
-    content = <MdLightMode size={24} />
+    content = <MdLightMode size={32} />
   } else {
-    content = <MdDarkMode size={24} />
+    content = <MdDarkMode size={32} />
   }
 
   return (

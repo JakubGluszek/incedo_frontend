@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --dark-bg: #242933;
   --nord0: #2E3440;
   --nord1: #3B4252;
   --nord2: #434C5E;
@@ -27,7 +28,7 @@
   }
 
   body {
-    @apply h-full bg-slate-100 dark:bg-[#242933] text-nord3 dark:text-nord6;
+    @apply h-full bg-nord6 dark:bg-dark-bg text-nord0 dark:text-nord6;
   }
 
   #root {
