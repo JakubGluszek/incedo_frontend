@@ -6,9 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { accountApi } from './app/services/account';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
+
+store.dispatch(accountApi.endpoints.getAccount.initiate({}))
 
 root.render(
   <ThemeProvider>

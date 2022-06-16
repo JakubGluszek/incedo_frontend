@@ -32,8 +32,8 @@ const Header: React.FC<Props> = ({ children }) => {
       <div className='h-20'>{/* spacing because header is fixed */}</div>
       <header className={`z-50 transition-height duration-300 w-screen ${scrollTop > 0 ? 'h-16' : 'h-20'} fixed top-0 bg-nord6 dark:bg-[#242933] ${scrollTop > 0 ? 'shadow-md shadow-slate-200/50 dark:shadow-black/10' : ''}`}>
         <div className='px-6 max-w-screen-lg m-auto h-full flex flex-row items-center justify-between'>
+          <div className='flex flex-row items-center gap-4'>
           <Link to='/' className='text-2xl font-bold tracking-widest p-2 hover:bg-white dark:hover:bg-nord0 rounded-md'>Incedo</Link>
-          <nav className='flex text-lg gap-1 items-center'>
             <Transition
               show={scrollTop > 1}
               enter="transition-opacity duration-75"
@@ -49,6 +49,8 @@ const Header: React.FC<Props> = ({ children }) => {
                 <MdArrowUpward size={32} />
               </button>
             </Transition>
+          </div>
+          <nav className='flex text-lg gap-1 items-center'>
             <ToggleTheme />
             {children}
           </nav>

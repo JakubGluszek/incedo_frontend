@@ -12,12 +12,12 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
     <>
       <Header>
         <button className='btn-nav'
-          aria-label='Expand Navbar' 
+          aria-label='Expand Navbar'
         >
           <MdExpandMore size={32} />
         </button>
       </Header>
-      <main className='grow overflow-x-hidden'>
+      <main className=''>
         {children}
       </main>
     </>

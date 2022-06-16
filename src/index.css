@@ -28,7 +28,7 @@
   }
 
   body {
-    @apply h-full bg-nord6 dark:bg-dark-bg text-nord0 dark:text-nord6;
+    @apply h-full bg-nord6 dark:bg-dark-bg text-nord0 dark:text-nord6 transition-transform;
   }
 
   #root {

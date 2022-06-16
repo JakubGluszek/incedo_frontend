@@ -14,11 +14,12 @@ const PublicLayout: React.FC<Props> = ({ children }) => {
           <span>Sign in</span>
         </Link>
       </Header>
-      <main className=''>
+      <main className='grow overflow-x-hidden'>
         {children}
       </main>
-      <footer className=''>
+      <footer className='w-full flex flex-col items-center justify-center'>
         <span>© 2022 Incedo, Inc.</span>
+        <p className='opacity-40 italic'>**Under construction**</p>
       </footer>
     </>
   )

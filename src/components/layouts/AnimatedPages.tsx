@@ -14,6 +14,7 @@ interface Props {
 export const AnimatedPage: React.FC<Props> = ({ children }) => {
   return (
     <motion.div
+      className='w-full h-full flex flex-col'
       variants={animations}
       initial="initial"
       animate="animate"
