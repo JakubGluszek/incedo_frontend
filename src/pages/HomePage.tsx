@@ -62,6 +62,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/profile')}
+            aria-label='Navigate to "profile" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -75,6 +76,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/settings')}
+            aria-label='Navigate to "settings" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -96,6 +98,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/notebooks')}
+            aria-label='Navigate to "notebooks" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -109,6 +112,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/snippets')}
+            aria-label='Navigate to "snippets" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -124,6 +128,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/bookmarks')}
+            aria-label='Navigate to "bookmarks" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -137,6 +142,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/sessions')}
+            aria-label='Navigate to "sessions" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -152,6 +158,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/timers')}
+            aria-label='Navigate to "timers" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -165,6 +172,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/commandments')}
+            aria-label='Navigate to "commandments" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -186,6 +194,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/people')}
+            aria-label='Navigate to "people" page'
           >
             <TiArrowRight size={24} />
           </button>
@@ -199,6 +208,7 @@ const HomePage: React.FC = () => {
           </div>
           <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
             onClick={() => navigate('/discourse')}
+            aria-label='Navigate to "discourse" page'
           >
             <TiArrowRight size={24} />
           </button>

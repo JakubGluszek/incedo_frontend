@@ -11,7 +11,9 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <Header>
-        <button name='Expand Navbar' className='btn-nav'>
+        <button className='btn-nav'
+          aria-label='Expand Navbar' 
+        >
           <MdExpandMore size={32} />
         </button>
       </Header>

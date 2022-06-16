@@ -6,6 +6,7 @@ import EmailCallback from './features/account/EmailCallback';
 import AuthRequired from './features/account/AuthRequired';
 import SignInPage from './pages/SignInPage';
 import HomePage from './pages/HomePage';
+import NotebooksPage from './pages/NotebooksPage';
 
 const App: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const App: React.FC = () => {
 
         {/* protected */}
         <Route element={<AuthRequired />}>
-          <Route element={<h1>Protected</h1>} />
+          <Route path="notebooks" element={<NotebooksPage />} />
         </Route>
 
         {/* public */}
