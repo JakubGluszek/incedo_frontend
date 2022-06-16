@@ -18,9 +18,9 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
       <main className='w-screen'>
         {children}
       </main>
-      {/* <footer className='w-screen flex justify-center'>
+      <footer className='w-screen h-16 flex flex-row items-center justify-center'>
         <span>© 2022 Incedo, Inc.</span>
-      </footer> */}
+      </footer>
     </>
   )
 }
