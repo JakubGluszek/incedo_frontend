@@ -83,7 +83,12 @@ const EnterEmail: React.FC = () => {
       <div className='bg-nord0 p-4 rounded-md flex flex-col gap-4 items-center'>
         <p>Check your inbox</p>
         <p>An email has been sent to {watch('email')}</p>
-        <button className='submit' onClick={() => navigate('/', { replace: true })}>OK</button>
+        <button className='submit'
+          onClick={() => navigate('/', { replace: true })}
+          aria-label='OK'
+        >
+          OK
+        </button>
       </div>
     )
   }

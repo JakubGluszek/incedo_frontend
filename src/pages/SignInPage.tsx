@@ -67,6 +67,7 @@ const SignInPage: React.FC = () => {
         </p>
         <button className='submit'
           onClick={() => navigate('/', { replace: true })}
+          aria-label='OK'
         >
           OK
         </button>
