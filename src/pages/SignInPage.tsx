@@ -37,7 +37,7 @@ const SignInPage: React.FC = () => {
 
 
   const google = (
-    <a className='flex flex-row items-center gap-2 text-nord9 hover:text-nord10 text-lg font-bold bg-white dark:bg-nord0 shadow-md p-2 rounded-md'
+    <a className='flex flex-row items-center gap-2 text-nord9 hover:text-nord10 text-lg font-bold bg-white dark:bg-nord0 transition-shadow hover:shadow-md p-2 rounded-md'
       href={`${process.env.REACT_APP_API_HOST}/account/auth/signin/google`}
     >
       <FcGoogle size={24} />
@@ -51,7 +51,7 @@ const SignInPage: React.FC = () => {
     content = (
       <>
         <h2>Sign in with email</h2>
-        <div className='shadow-md p-6 bg-white dark:bg-nord0 rounded-md'>
+        <div className='p-6 transition-shadow hover:shadow-md bg-white dark:bg-nord0 rounded-md'>
           {form}
         </div>
         <span className='opacity-90'>or</span>

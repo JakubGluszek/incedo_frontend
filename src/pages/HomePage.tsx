@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
           <span className='text-xl'>Account</span>
         </div>
 
-        <div className='w-full flex flex-col gap-4 bg-white dark:bg-nord0 p-4 rounded-md '>
+        <div className='w-full flex flex-col gap-4 bg-white dark:bg-nord0 p-4 rounded-md transition-shadow duration-300 hover:shadow-md'>
           <div className='w-full h-16 flex flex-row gap-2 items-center'>
             <img className='rounded-md'
               src={user.avatar}
@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0 rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/profile')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -69,7 +69,7 @@ const HomePage: React.FC = () => {
               <TiArrowRight size={24} />
             </button>
           </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between  gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between  gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/settings')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -91,7 +91,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/notebooks')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -105,7 +105,7 @@ const HomePage: React.FC = () => {
               <TiArrowRight size={24} />
             </button>
           </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/snippets')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -121,7 +121,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/bookmarks')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -135,7 +135,7 @@ const HomePage: React.FC = () => {
               <TiArrowRight size={24} />
             </button>
           </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/sessions')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -151,7 +151,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/timers')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -165,7 +165,7 @@ const HomePage: React.FC = () => {
               <TiArrowRight size={24} />
             </button>
           </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/commandments')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -187,7 +187,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/people')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
@@ -201,7 +201,7 @@ const HomePage: React.FC = () => {
               <TiArrowRight size={24} />
             </button>
           </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-transform hover:shadow-md hover:scale-[101%]'
+          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default transition-all hover:shadow-md hover:scale-[101%]'
             onClick={() => tryNavigate('/discourse')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>

@@ -18,7 +18,7 @@ const NotebooksPage: React.FC = () => {
   const navigate = useNavigate();
 
   const notebooks = notebooks_data.map(n => (
-    <div key={n.id} className='w-full h-fit flex flex-col p-2 gap-2 bg-white dark:bg-nord0 rounded-md hover:shadow-md'>
+    <div key={n.id} className='w-full h-fit flex flex-col p-2 gap-2 bg-white dark:bg-nord0 rounded-md transition-all duration-300 hover:shadow-md'>
       <div className='w-full h-fit flex flex-row items-center gap-2'>
         <ImBook size={24} />
         <span>{n.label}</span>
