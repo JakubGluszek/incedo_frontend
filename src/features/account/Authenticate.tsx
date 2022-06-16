@@ -1,29 +1,25 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-
 import { useGetAccountQuery } from '../../app/services/account';
-import AuthLayout from '../../components/AuthLayout';
-import PublicLayout from '../../components/PublicLayout';
+
+import AuthLayout from '../../components/layouts/AuthLayout';
+import PublicLayout from '../../components/layouts/PublicLayout';
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
 
 // fetch current user, return content based on status
 const Authenticate: React.FC = () => {
-  const { isLoading, isSuccess } = useGetAccountQuery({})
+  const { isLoading } = useGetAccountQuery({})
   const user = useAppSelector(selectCurrentUser)
 
   let content;
-
   if (isLoading) {
     content = null
+  } else if (user) {
+    content = <AuthLayout><Outlet /></AuthLayout>
   } else {
-    if (isSuccess || user) {
-      content = <AuthLayout><Outlet /></AuthLayout>
-    } else {
-      content = <PublicLayout><Outlet /></PublicLayout>
-    }
+    content = <PublicLayout><Outlet /></PublicLayout>
   }
-
   return content
 }
 

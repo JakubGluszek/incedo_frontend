@@ -9,6 +9,8 @@ module.exports = {
         'height': 'height',
       },
       colors: {
+        'light-bg': 'var(--light-bg)',
+        'dark-bg': 'var(--dark-bg)',
         nord0: 'var(--nord0)',
         nord1: 'var(--nord1)',
         nord2: 'var(--nord2)',

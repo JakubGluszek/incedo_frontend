@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { selectCurrentUser } from '../features/account/accountSlice';
 import { useAppSelector } from '../hooks/store';
 import { MdEmail } from 'react-icons/md'
+import { AnimatedPage } from '../components/layouts/AnimatedPages';
 
 const SignInPage: React.FC = () => {
   const [getToken, { isUninitialized }] = useGetTokenMutation()
@@ -36,7 +37,7 @@ const SignInPage: React.FC = () => {
 
 
   const google = (
-    <a className='flex flex-row items-center gap-2 text-nord9 hover:text-nord10 text-lg font-bold bg-white dark:bg-nord0 shadow-md p-2 rounded-md'
+    <a className='flex flex-row items-center gap-2 text-nord9 hover:text-nord10 text-lg font-bold bg-white dark:bg-nord0 transition-shadow hover:shadow-md p-2 rounded-md'
       href={`${process.env.REACT_APP_API_HOST}/account/auth/signin/google`}
     >
       <FcGoogle size={24} />
@@ -50,7 +51,7 @@ const SignInPage: React.FC = () => {
     content = (
       <>
         <h2>Sign in with email</h2>
-        <div className='shadow-md p-6 bg-white dark:bg-nord0 rounded-md'>
+        <div className='p-6 transition-shadow hover:shadow-md bg-white dark:bg-nord0 rounded-md'>
           {form}
         </div>
         <span className='opacity-90'>or</span>
@@ -67,6 +68,7 @@ const SignInPage: React.FC = () => {
         </p>
         <button className='submit'
           onClick={() => navigate('/', { replace: true })}
+          aria-label='OK'
         >
           OK
         </button>
@@ -80,9 +82,11 @@ const SignInPage: React.FC = () => {
   }
 
   return (
-    <div className='grow p-8 flex flex-col items-center justify-center gap-6 lg:text-xl'>
-      {content}
-    </div>
+    <AnimatedPage>
+      <div className='grow p-8 flex flex-col items-center justify-center gap-6 lg:text-xl'>
+        {content}
+      </div>
+    </AnimatedPage>
   )
 }
 

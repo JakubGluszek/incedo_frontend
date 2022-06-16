@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
 import { MdEmail } from 'react-icons/md';
+import { AnimatedPage } from '../../components/layouts/AnimatedPages';
 
 // Get token from ?token query
 // Try to sign in using token
@@ -83,15 +84,22 @@ const EnterEmail: React.FC = () => {
       <div className='bg-nord0 p-4 rounded-md flex flex-col gap-4 items-center'>
         <p>Check your inbox</p>
         <p>An email has been sent to {watch('email')}</p>
-        <button className='submit' onClick={() => navigate('/', { replace: true })}>OK</button>
+        <button className='submit'
+          onClick={() => navigate('/', { replace: true })}
+          aria-label='OK'
+        >
+          OK
+        </button>
       </div>
     )
   }
 
   return (
-    <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center lg:text-lg'>
-      {content}
-    </div>
+    <AnimatedPage>
+      <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center lg:text-lg'>
+        {content}
+      </div>
+    </AnimatedPage>
   )
 }
 
