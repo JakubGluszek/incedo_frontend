@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ToggleTheme from './ToggleTheme';
+import { MdArrowUpward } from 'react-icons/md';
+import { Transition } from '@tailwindui/react'
 
 interface Props {
   children?: React.ReactNode
@@ -8,6 +10,15 @@ interface Props {
 
 const Header: React.FC<Props> = ({ children }) => {
   const [scrollTop, setScrollTop] = useState(0)
+
+  // author - https://stackoverflow.com/a/48942924/19312806
+  const scrollToTop = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+      window.requestAnimationFrame(scrollToTop);
+      window.scrollTo(0, c - c / 12);
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrollTop(window.pageYOffset)
@@ -22,7 +33,22 @@ const Header: React.FC<Props> = ({ children }) => {
       <header className={`z-50 transition-height duration-300 w-screen ${scrollTop > 0 ? 'h-16' : 'h-20'} fixed top-0 bg-nord6 dark:bg-[#242933] ${scrollTop > 0 ? 'shadow-md shadow-slate-200/50 dark:shadow-black/10' : ''}`}>
         <div className='px-6 max-w-screen-lg m-auto h-full flex flex-row items-center justify-between'>
           <Link to='/' className='text-2xl font-bold tracking-widest p-2 hover:bg-white dark:hover:bg-nord0 rounded-md'>Incedo</Link>
-          <nav className='flex text-lg gap-4 items-center'>
+          <nav className='flex text-lg gap-1 items-center'>
+            <Transition
+              show={scrollTop > 1}
+              enter="transition-opacity duration-75"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity duration-150"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <button className='btn-nav text-nord7'
+                onClick={() => scrollToTop()}
+              >
+                <MdArrowUpward size={32} />
+              </button>
+            </Transition>
             <ToggleTheme />
             {children}
           </nav>

@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { selectCurrentUser } from '../features/account/accountSlice';
 import { useAppSelector } from '../hooks/store';
 import { MdEmail } from 'react-icons/md'
+import { AnimatedPage } from '../components/layouts/AnimatedPages';
 
 const SignInPage: React.FC = () => {
   const [getToken, { isUninitialized }] = useGetTokenMutation()
@@ -81,9 +82,11 @@ const SignInPage: React.FC = () => {
   }
 
   return (
-    <div className='grow p-8 flex flex-col items-center justify-center gap-6 lg:text-xl'>
-      {content}
-    </div>
+    <AnimatedPage>
+      <div className='grow p-8 flex flex-col items-center justify-center gap-6 lg:text-xl'>
+        {content}
+      </div>
+    </AnimatedPage>
   )
 }
 

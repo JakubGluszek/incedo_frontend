@@ -17,12 +17,9 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
           <MdExpandMore size={32} />
         </button>
       </Header>
-      <main className='w-screen'>
+      <main className='grow overflow-x-hidden'>
         {children}
       </main>
-      <footer className='w-screen h-16 flex flex-row items-center justify-center'>
-        <span>© 2022 Incedo, Inc.</span>
-      </footer>
     </>
   )
 }

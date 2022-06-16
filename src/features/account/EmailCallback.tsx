@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
 import { MdEmail } from 'react-icons/md';
+import { AnimatedPage } from '../../components/layouts/AnimatedPages';
 
 // Get token from ?token query
 // Try to sign in using token
@@ -94,9 +95,11 @@ const EnterEmail: React.FC = () => {
   }
 
   return (
-    <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center lg:text-lg'>
-      {content}
-    </div>
+    <AnimatedPage>
+      <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center lg:text-lg'>
+        {content}
+      </div>
+    </AnimatedPage>
   )
 }
 

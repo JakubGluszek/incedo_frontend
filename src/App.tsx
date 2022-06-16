@@ -1,5 +1,6 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import Authenticate from './features/account/Authenticate';
 import EmailCallback from './features/account/EmailCallback';
@@ -9,26 +10,30 @@ import HomePage from './pages/HomePage';
 import NotebooksPage from './pages/NotebooksPage';
 
 const App: React.FC = () => {
+  const location = useLocation()
+
   return (
-    <Routes>
-      <Route path='/' element={<Authenticate />}>
+    <AnimatePresence exitBeforeEnter>
+      <Routes key={location.pathname} location={location}>
+        <Route path='/' element={<Authenticate />}>
 
-        {/* public & protected */}
-        <Route index element={<HomePage />} />
+          {/* public & protected */}
+          <Route index element={<HomePage />} />
 
-        {/* protected */}
-        <Route element={<AuthRequired />}>
-          <Route path="notebooks" element={<NotebooksPage />} />
+          {/* protected */}
+          <Route element={<AuthRequired />}>
+            <Route path="notebooks" element={<NotebooksPage />} />
+          </Route>
+
+          {/* public */}
+          <Route path="signin" element={<SignInPage />} />
+          <Route path="callback">
+            <Route path="email" element={<EmailCallback />} />
+          </Route>
+
         </Route>
-
-        {/* public */}
-        <Route path="signin" element={<SignInPage />} />
-        <Route path="callback">
-          <Route path="email" element={<EmailCallback />} />
-        </Route>
-
-      </Route>
-    </Routes>
+      </Routes>
+    </AnimatePresence>
   );
 }
 
