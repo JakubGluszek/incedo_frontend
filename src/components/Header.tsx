@@ -46,7 +46,7 @@ const Header: React.FC<Props> = ({ children }) => {
               <button className='btn-nav text-nord7'
                 onClick={() => scrollToTop()}
               >
-                <MdArrowUpward size={32} />
+                <MdArrowUpward size={32} aria-label='Scroll to top' />
               </button>
             </Transition>
           </div>

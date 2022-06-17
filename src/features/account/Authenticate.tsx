@@ -9,11 +9,11 @@ import { selectCurrentUser } from './accountSlice';
 
 // fetch current user, return content based on status
 const Authenticate: React.FC = () => {
-  const { isLoading } = useGetAccountQuery({})
+  const { isUninitialized } = useGetAccountQuery({})
   const user = useAppSelector(selectCurrentUser)
 
   let content;
-  if (isLoading) {
+  if (isUninitialized) {
     content = null
   } else if (user) {
     content = <AuthLayout><Outlet /></AuthLayout>
