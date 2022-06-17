@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
 
         <div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
           <MdPerson size={32} />
-          <span className='text-xl'>Account</span>
+          <span className='text-2xl'>Account</span>
         </div>
 
         <div className='w-full flex flex-col gap-4 bg-white dark:bg-nord0 p-4 rounded-md transition-shadow duration-300 hover:shadow-md'>
@@ -87,7 +87,7 @@ const HomePage: React.FC = () => {
 
         <div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
           <MdExtension size={32} />
-          <span className='text-xl'>Features</span>
+          <span className='text-2xl'>Features</span>
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
@@ -183,7 +183,7 @@ const HomePage: React.FC = () => {
 
         <div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
           <MdPublic size={32} />
-          <span className='text-xl'>Public</span>
+          <span className='text-2xl'>Public</span>
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
