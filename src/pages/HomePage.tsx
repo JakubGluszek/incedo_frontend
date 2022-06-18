@@ -166,15 +166,15 @@ const HomePage: React.FC = () => {
             </button>
           </div>
           <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/commandments')}
+            onClick={() => tryNavigate('/principles')}
           >
             <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
               <FaYinYang size={24} />
-              <span className='text-center text-xs sm:text-base'>Commandments</span>
+              <span className='text-center text-xs sm:text-base'>Principles</span>
             </div>
             <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/commandments')}
-              aria-label='Navigate to "commandments" page'
+              onClick={() => navigate('/principles')}
+              aria-label='Navigate to "principles" page'
             >
               <TiArrowRight size={24} />
             </button>

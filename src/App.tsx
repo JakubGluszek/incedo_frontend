@@ -12,7 +12,7 @@ import SettingsPage from './pages/Settings';
 import ProfilePage from './pages/ProfilePage';
 import SnippetsPage from './pages/SnippetsPage';
 import DiscoursePage from './pages/DiscoursePage';
-import CommandmentsPage from './pages/CommandmentPage';
+import PrinciplesPage from './pages/PrinciplesPage';
 import TimersPage from './pages/TimersPage';
 import SessionsPage from './pages/SessionsPage';
 import BookmarksPage from './pages/BookmarksPage';
@@ -48,7 +48,7 @@ const App: React.FC = () => {
             <Route path="bookmarks" element={<BookmarksPage />} />
             <Route path="sessions" element={<SessionsPage />} />
             <Route path="timers" element={<TimersPage />} />
-            <Route path="commandments" element={<CommandmentsPage />} />
+            <Route path="principles" element={<PrinciplesPage />} />
             <Route path="people" element={<PeoplesPage />} />
             <Route path="discourse" element={<DiscoursePage />} />
           </Route>
