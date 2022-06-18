@@ -1,26 +1,52 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { useGetAccountQuery } from '../../app/services/account';
+import { MdExpandMore } from 'react-icons/md';
+import { Link, Outlet } from 'react-router-dom';
+import Header from '../../components/Header';
 
-import AuthLayout from '../../components/layouts/AuthLayout';
-import PublicLayout from '../../components/layouts/PublicLayout';
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
 
 // fetch current user, return content based on status
 const Authenticate: React.FC = () => {
-  const { isLoading } = useGetAccountQuery({})
   const user = useAppSelector(selectCurrentUser)
 
   let content;
-  if (isLoading) {
-    content = null
-  } else if (user) {
-    content = <AuthLayout><Outlet /></AuthLayout>
+
+  if (user) {
+    content = (
+      <button className='btn-nav'
+        aria-label='Expand Navbar'
+      >
+        <MdExpandMore size={32} />
+      </button>
+    )
+    // public header
   } else {
-    content = <PublicLayout><Outlet /></PublicLayout>
+    content = (
+      <Link to='/signin' className='btn-nav'>
+        <span>Sign in</span>
+      </Link>
+    )
   }
-  return content
+
+  return (
+    <>
+      <Header>
+        {content}
+      </Header>
+      <main className=''>
+        <Outlet />
+      </main>
+      {user
+        ? null
+        :
+        <footer className='w-full flex flex-col items-center justify-center'>
+          <span>© 2022 Incedo, Inc.</span>
+          <p className='opacity-40 italic'>**Under construction**</p>
+        </footer>
+      }
+    </>
+  )
 }
 
 export default Authenticate;

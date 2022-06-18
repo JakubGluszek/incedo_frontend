@@ -33,12 +33,19 @@ export const ThemeProvider = ({ initialTheme, children }: { initialTheme?: strin
     root.classList.remove(isDark ? 'light' : 'dark');
     root.classList.add(rawTheme);
 
+    if (isDark) {
+      document.documentElement.setAttribute('data-color-mode', 'dark')
+    } else {
+      document.documentElement.setAttribute('data-color-mode', 'light')
+    }
+
     localStorage.setItem('color-theme', rawTheme);
   };
 
   if (initialTheme) {
     rawSetTheme(initialTheme);
   }
+
   useEffect(() => {
     rawSetTheme(theme);
   }, [theme]);
