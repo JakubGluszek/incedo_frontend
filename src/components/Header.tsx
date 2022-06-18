@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({ children }) => {
     const c = document.documentElement.scrollTop || document.body.scrollTop;
     if (c > 0) {
       window.requestAnimationFrame(scrollToTop);
-      window.scrollTo(0, c - c / 12);
+      window.scrollTo(0, c - c / 8);
     }
   };
 
@@ -33,7 +33,7 @@ const Header: React.FC<Props> = ({ children }) => {
       <header className={`z-50 transition-height duration-300 w-screen ${scrollTop > 0 ? 'h-16' : 'h-20'} fixed top-0 bg-nord6 dark:bg-[#242933] ${scrollTop > 0 ? 'shadow-md shadow-slate-200/50 dark:shadow-black/10' : ''}`}>
         <div className='px-6 max-w-screen-lg m-auto h-full flex flex-row items-center justify-between'>
           <div className='flex flex-row items-center gap-4'>
-          <Link to='/' className='text-2xl font-bold tracking-widest p-2 hover:bg-white dark:hover:bg-nord0 rounded-md'>Incedo</Link>
+            <Link to='/' className='text-2xl font-bold tracking-widest p-2 hover:bg-white dark:hover:bg-nord0 rounded-md'>Incedo</Link>
             <Transition
               show={scrollTop > 1}
               enter="transition-opacity duration-75"

@@ -7,7 +7,6 @@ import EmailCallback from './features/account/EmailCallback';
 import AuthRequired from './features/account/AuthRequired';
 import SignInPage from './pages/SignInPage';
 import HomePage from './pages/HomePage';
-import NotebooksPage from './pages/NotebooksPage';
 import PeoplesPage from './pages/PeoplePage';
 import SettingsPage from './pages/Settings';
 import ProfilePage from './pages/ProfilePage';
@@ -17,9 +16,18 @@ import CommandmentsPage from './pages/CommandmentPage';
 import TimersPage from './pages/TimersPage';
 import SessionsPage from './pages/SessionsPage';
 import BookmarksPage from './pages/BookmarksPage';
+import NotebooksPage from './pages/notebooks/NotebooksPage';
+import NotebookPage from './pages/notebooks/NotebookPage';
+import NotePage from './pages/notebooks/NotePage';
+import { useGetAccountQuery } from './app/services/account';
 
 const App: React.FC = () => {
   const location = useLocation()
+  const { isUninitialized, isLoading } = useGetAccountQuery({})
+
+  if (isUninitialized || isLoading) {
+    return <span>loading</span>
+  }
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -34,6 +42,8 @@ const App: React.FC = () => {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="settings" element={< SettingsPage />} />
             <Route path="notebooks" element={<NotebooksPage />} />
+            <Route path="notebooks/:id" element={<NotebookPage />} />
+            <Route path="notebooks/:id/:id" element={<NotePage />} />
             <Route path="snippets" element={<SnippetsPage />} />
             <Route path="bookmarks" element={<BookmarksPage />} />
             <Route path="sessions" element={<SessionsPage />} />
