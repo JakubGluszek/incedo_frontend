@@ -1,6 +1,6 @@
-import { INotebookCreate } from "../../features/notebooks/interfaces";
-import { INotebook, IFetchById } from "../../interfaces";
-import { api } from "./api"
+import { INotebookCreate } from '../../features/notebooks/interfaces';
+import { INotebook, IFetchById } from '../../interfaces';
+import { api } from './api'
 
 export const notebooksApi = api.injectEndpoints({
   endpoints: builder => ({

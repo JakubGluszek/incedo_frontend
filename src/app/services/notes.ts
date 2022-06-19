@@ -1,6 +1,6 @@
-import { IFetchById } from "../../interfaces";
+import { IFetchById } from '../../interfaces';
 import { INote } from '../../features/notes/interfaces';
-import { api } from "./api"
+import { api } from './api';
 
 export const notesApi = api.injectEndpoints({
   endpoints: builder => ({

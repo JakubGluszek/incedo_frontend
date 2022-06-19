@@ -16,7 +16,7 @@ export interface INotebook {
 }
 
 export interface INotebookCreate {
-  label: string,
+  label?: string,
   about?: string
 }
 

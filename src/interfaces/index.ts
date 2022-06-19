@@ -1,6 +1,6 @@
 export type {
   IStateAccount, IUser, ILogin, IFetchToken
-} from './account';
+} from '../features/account/interfaces';
 export type {
   INotebook
 } from '../features/notebooks/interfaces';

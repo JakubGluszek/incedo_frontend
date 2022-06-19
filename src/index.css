@@ -60,6 +60,10 @@
   button {
     @apply transition-colors duration-200;
   }
+
+  textarea {
+    @apply w-full bg-transparent resize-none border-2 border-nord4 dark:border-nord3 outline-none hover:border-nord9 dark:hover:border-nord9 p-2 rounded-sm;
+  }
   
   * {
     -webkit-tap-highlight-color: transparent;
@@ -85,9 +89,6 @@
   }
   .btn-nav {
     @apply p-2 rounded-md hover:bg-white dark:hover:bg-nord0;
-  }
-  .card {
-    @apply bg-white dark:bg-nord0 shadow-sm p-4 rounded-md;
   }
 }
 

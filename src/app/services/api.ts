@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery, BaseQueryFn } from '@reduxjs/toolkit/query/r
 import Cookies from 'universal-cookie';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.REACT_APP_API_HOST,
+  baseUrl: import.meta.env.VITE_API,
   credentials: 'include',
   prepareHeaders: (headers) => {
     const cookies = new Cookies()

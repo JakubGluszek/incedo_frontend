@@ -1,16 +1,14 @@
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
+import { store } from './app/store';
 import { ThemeProvider } from './contexts/ThemeContext';
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <ThemeProvider>
     <Provider store={store}>
       <Router>

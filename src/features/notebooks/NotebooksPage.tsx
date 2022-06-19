@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { ImBooks } from 'react-icons/im';
 import { MdAddBox, MdSearch } from 'react-icons/md';
+import { MdCancel } from 'react-icons/md';
 
 import { useAppSelector } from '../../hooks/store';
 import { useFetchNotebooksQuery } from '../../app/services/notebooks';
@@ -10,6 +11,7 @@ import { selectAllNotebooks } from '../../features/notebooks/notebooksSlice';
 import { FadeInPage } from '../../components/AnimatedPages';
 import NotebookPreview from './NotebookPreview';
 import BottomActionBar from '../../components/BottomActionBar';
+import NotebookCreate from './NotebookCreate';
 
 const NotebooksPage: React.FC = () => {
 	// fetch & select notebooks
@@ -40,7 +42,8 @@ const NotebooksPage: React.FC = () => {
 					<ImBooks size={32} />
 					<span className='text-2xl'>Notebooks</span>
 				</div>
-				{/* Notes Previews */}
+				{createNotebook ? <NotebookCreate display={createNotebook} /> : null}
+				{/* Notebooks Previews */}
 				<div className='w-full h-fit flex flex-col gap-4 sm:grid sm:grid-cols-2'>
 					{content}
 				</div>
@@ -50,7 +53,10 @@ const NotebooksPage: React.FC = () => {
 				<button className='btn-nav'
 					onClick={() => setCreateNotebook(!createNotebook)}
 				>
-					<MdAddBox className='w-6 h-6 sm:w-8 sm:h-8' />
+					{createNotebook
+						? <MdCancel className='w-6 h-6 sm:w-8 sm:h-8' />
+						: <MdAddBox className='w-6 h-6 sm:w-8 sm:h-8' />
+					}
 				</button>
 				<button className='btn-nav'>
 					<MdSearch className='w-6 h-6 sm:w-8 sm:h-8' />

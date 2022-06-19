@@ -37,7 +37,7 @@ const Header: React.FC<Props> = ({ children }) => {
           <div className='flex flex-row items-center gap-4'>
             <Link to='/' className='text-2xl font-bold tracking-widest p-2 hover:bg-white dark:hover:bg-nord0 rounded-md'>Incedo</Link>
             <Transition
-              show={scrollTop > 1}
+              show={scrollTop > 80}
               enter="transition-opacity duration-75"
               enterFrom="opacity-0"
               enterTo="opacity-100"

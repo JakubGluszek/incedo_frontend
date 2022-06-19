@@ -1,5 +1,5 @@
-import { IFetchToken, ILogin, IUser } from "../../interfaces"
-import { api } from "./api"
+import { IFetchToken, ILogin, IUser } from '../../interfaces';
+import { api } from './api';
 
 export const accountApi = api.injectEndpoints({
   endpoints: builder => ({
