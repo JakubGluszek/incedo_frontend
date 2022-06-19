@@ -5,7 +5,7 @@ import { MdAddBox, MdSearch } from 'react-icons/md';
 import { MdCancel } from 'react-icons/md';
 
 import { useAppSelector } from '../../hooks/store';
-import { useFetchNotebooksQuery } from '../../app/services/notebooks';
+import { useFetchNotebooksQuery, useUpdateNotebookMutation } from '../../app/services/notebooks';
 import { selectAllNotebooks } from '../../features/notebooks/notebooksSlice';
 
 import { FadeInPage } from '../../components/AnimatedPages';

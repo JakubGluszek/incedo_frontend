@@ -54,7 +54,7 @@ const NotebookPage: React.FC = () => {
       </>
     )
   }
-
+  
   return (
     <FadeInPage>
       {/* page content */}

@@ -6,4 +6,10 @@ export interface INote {
   notebook_id: number,
   created_at: number,
   updated_at: number
-}
+};
+
+export interface INoteCreate {
+  label: string,
+  body?: string,
+  notebook_id: number
+};

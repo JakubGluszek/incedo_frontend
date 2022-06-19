@@ -17,31 +17,31 @@ const notesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addMatcher(
-      notesApi.endpoints.fetchNoteById.matchFulfilled,
-      notesAdapter.setOne
-    )
-    builder.addMatcher(
       notebooksApi.endpoints.fetchNotebooks.matchFulfilled,
       (state, { payload }) => {
-        payload.map(notebook => notesAdapter.upsertMany(state, notebook.notes))
+        payload.map(notebook => notesAdapter.setMany(state, notebook.notes))
       }
     )
     builder.addMatcher(
       notebooksApi.endpoints.fetchNotebookById.matchFulfilled,
       (state, { payload }) => notesAdapter.setMany(state, payload.notes)
     )
-    // builder.addMatcher(
-    //   accountApi.endpoints.fetchAccount.matchFulfilled,
-    //   (state, { payload }) => {
-    //     state.user = payload
-    //   }
-    // ),
-    // builder.addMatcher(
-    //   accountApi.endpoints.login.matchFulfilled,
-    //   (state, { payload }) => {
-    //     state.user = payload
-    //   }
-    // ),
+    builder.addMatcher(
+      notesApi.endpoints.fetchNoteById.matchFulfilled,
+      notesAdapter.setOne
+    )
+    builder.addMatcher(
+      notesApi.endpoints.fetchNotes.matchFulfilled,
+      notesAdapter.setMany
+    )
+    builder.addMatcher(
+      notesApi.endpoints.createNote.matchFulfilled,
+      notesAdapter.addOne
+    )
+    builder.addMatcher(
+      notesApi.endpoints.updateNote.matchFulfilled,
+      notesAdapter.upsertOne
+    )
   }
 })
 

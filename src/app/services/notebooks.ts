@@ -1,6 +1,10 @@
-import { INotebookCreate } from '../../features/notebooks/interfaces';
-import { INotebook, IFetchById } from '../../interfaces';
-import { api } from './api'
+import { api } from './api';
+import {
+  IFetchById,
+  INotebook,
+  INotebookCreate,
+  IStateNotebook
+} from '../../interfaces';
 
 export const notebooksApi = api.injectEndpoints({
   endpoints: builder => ({
@@ -16,6 +20,19 @@ export const notebooksApi = api.injectEndpoints({
         method: 'POST',
         body: notebook
       })
+    }),
+    updateNotebook: builder.mutation<INotebook, IStateNotebook>({
+      query: (notebook) => ({
+        url: `/notebooks/${notebook.id}`,
+        method: 'PUT',
+        body: notebook
+      })
+    }),
+    deleteNotebook: builder.mutation<any, number>({
+      query: (id) => ({
+        url: `/notebooks/${id}`,
+        method: 'DELETE'
+      })
     })
   })
 })
@@ -23,5 +40,7 @@ export const notebooksApi = api.injectEndpoints({
 export const {
   useFetchNotebooksQuery,
   useFetchNotebookByIdQuery,
-  useCreateNotebookMutation
+  useCreateNotebookMutation,
+  useUpdateNotebookMutation,
+  useDeleteNotebookMutation
 } = notebooksApi;

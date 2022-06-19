@@ -23,6 +23,18 @@ const notebooksSlice = createSlice({
       notebooksApi.endpoints.fetchNotebookById.matchFulfilled,
       notebooksAdapter.setOne
     )
+    builder.addMatcher(
+      notebooksApi.endpoints.createNotebook.matchFulfilled,
+      notebooksAdapter.addOne
+    )
+    builder.addMatcher(
+      notebooksApi.endpoints.updateNotebook.matchFulfilled,
+      notebooksAdapter.upsertOne
+    )
+    builder.addMatcher(
+      notebooksApi.endpoints.deleteNotebook.matchFulfilled,
+      notebooksAdapter.removeOne
+    )
   }
 })
 
