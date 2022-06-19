@@ -1,30 +1,30 @@
-import { IGetToken, ISignIn, IUser } from "../../interfaces"
+import { IFetchToken, ILogin, IUser } from "../../interfaces"
 import { api } from "./api"
 
 export const accountApi = api.injectEndpoints({
   endpoints: builder => ({
-    signIn: builder.mutation<IUser, ISignIn>({
+    login: builder.mutation<IUser, ILogin>({
       query: (credentials) => ({
         url: '/account/auth/signin',
         method: 'POST',
         body: { ...credentials }
       })
     }),
-    getToken: builder.mutation<any, IGetToken>({
+    fetchToken: builder.mutation<any, IFetchToken>({
       query: (credentials) => ({
         url: '/account/auth/token',
         method: 'POST',
         body: { ...credentials }
       })
     }),
-    getAccount: builder.query<IUser, any>({
+    fetchAccount: builder.query<IUser, any>({
       query: () => '/account/user'
     })
   })
 })
 
 export const {
-  useSignInMutation,
-  useGetTokenMutation,
-  useGetAccountQuery
+  useLoginMutation,
+  useFetchTokenMutation,
+  useFetchAccountQuery
 } = accountApi;

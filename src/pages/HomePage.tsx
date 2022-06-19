@@ -19,21 +19,34 @@ import { TiArrowRight } from 'react-icons/ti';
 import { ImBooks } from 'react-icons/im';
 import { GoCommentDiscussion } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
-import { AnimatedPage } from '../components/layouts/AnimatedPages';
+import { FadeInPage } from '../components/AnimatedPages';
+import { tryNavigate } from '../utils';
 
 const HomePage: React.FC = () => {
-  const user = useAppSelector(selectCurrentUser)
+  const user = useAppSelector(selectCurrentUser);
   const navigate = useNavigate();
+
   if (!user) return <IndexPage />;
 
-  const tryNavigate = (to: string) => {
-    if (window.innerWidth <= 640) {
-      navigate(to)
-    }
-  }
+  const section = (title: string, to: string, icon: React.ReactElement) => (
+    <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
+      onClick={() => tryNavigate(navigate, to)}
+    >
+      <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
+        {icon}
+        <span>{title}</span>
+      </div>
+      <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
+        onClick={() => navigate(to)}
+        aria-label='Navigate to "people" page'
+      >
+        <TiArrowRight size={24} />
+      </button>
+    </div>
+  )
 
   return (
-    <AnimatedPage>
+    <FadeInPage>
       <div className='max-w-screen-sm w-full mx-auto h-fit flex flex-col py-8 px-6 gap-4 text-sm sm:text-base'>
 
         <div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
@@ -41,6 +54,7 @@ const HomePage: React.FC = () => {
           <span className='text-2xl'>Account</span>
         </div>
 
+        {/* Account preview */}
         <div className='w-full flex flex-col gap-4 bg-white dark:bg-nord0 p-4 rounded-md transition-shadow duration-300 hover:shadow-md'>
           <div className='w-full h-16 flex flex-row gap-2 items-center'>
             <img className='rounded-md'
@@ -55,34 +69,8 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0 rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/profile')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <MdAccountBox size={32} />
-              <span>Profile</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/profile')}
-              aria-label='Navigate to "profile" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between  gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/settings')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <MdSettings size={32} />
-              <span>Settings</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/settings')}
-              aria-label='Navigate to "settings" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
+          {section('Profile', '/people', <MdAccountBox size={32} />)}
+          {section('Settings', '/settings', <MdSettings size={32} />)}
         </div>
 
         <div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
@@ -91,94 +79,16 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/notebooks')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <ImBooks size={32} />
-              <span>Notebooks</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/notebooks')}
-              aria-label='Navigate to "notebooks" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/snippets')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <MdTextSnippet size={32} />
-              <span>Snippets</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/snippets')}
-              aria-label='Navigate to "snippets" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
+          {section('Notebooks', '/notebooks', <ImBooks size={32} />)}
+          {section('Snippets', '/snippets', <MdTextSnippet size={32} />)}
         </div>
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/bookmarks')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <MdBookmarks size={32} />
-              <span>Bookmarks</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/bookmarks')}
-              aria-label='Navigate to "bookmarks" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/sessions')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <MdOutlineReplay size={32} />
-              <span>Sessions</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/sessions')}
-              aria-label='Navigate to "sessions" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
+          {section('Bookmarks', '/bookmarks', <MdBookmarks size={32} />)}
+          {section('Sessions', '/sessions', <MdOutlineReplay size={32} />)}
         </div>
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/timers')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <MdOutlineTimer size={32} />
-              <span>Timers</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/timers')}
-              aria-label='Navigate to "timers" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/principles')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <FaYinYang size={24} />
-              <span className='text-center text-xs sm:text-base'>Principles</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/principles')}
-              aria-label='Navigate to "principles" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
+          {section('Timers', '/timers', <MdOutlineTimer size={32} />)}
+          {section('Principles', '/principles', <FaYinYang size={32} />)}
         </div>
 
         <div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
@@ -187,38 +97,12 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className='w-full h-fit flex flex-row gap-4'>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/people')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <MdPeople size={32} />
-              <span>People</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/people')}
-              aria-label='Navigate to "people" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
-          <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-            onClick={() => tryNavigate('/discourse')}
-          >
-            <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
-              <GoCommentDiscussion size={32} />
-              <span>Discourse</span>
-            </div>
-            <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
-              onClick={() => navigate('/discourse')}
-              aria-label='Navigate to "discourse" page'
-            >
-              <TiArrowRight size={24} />
-            </button>
-          </div>
+          {section('People', '/people', <MdPeople size={32} />)}
+          {section('Discourse', '/discourse', <GoCommentDiscussion size={32} />)}
         </div>
 
       </div>
-    </AnimatedPage>
+    </FadeInPage>
   )
 };
 

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ToggleTheme from './ToggleTheme';
+import { Transition } from '@tailwindui/react';
+
 import { MdArrowUpward } from 'react-icons/md';
-import { Transition } from '@tailwindui/react'
+
+import ToggleTheme from './ToggleTheme';
 
 interface Props {
   children?: React.ReactNode
-}
+};
 
 const Header: React.FC<Props> = ({ children }) => {
-  const [scrollTop, setScrollTop] = useState(0)
+  const [scrollTop, setScrollTop] = useState(0);
 
   // author - https://stackoverflow.com/a/48942924/19312806
   const scrollToTop = () => {
@@ -17,7 +19,7 @@ const Header: React.FC<Props> = ({ children }) => {
     if (c > 0) {
       window.requestAnimationFrame(scrollToTop);
       window.scrollTo(0, c - c / 8);
-    }
+    };
   };
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const Header: React.FC<Props> = ({ children }) => {
 
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, []);
 
   return (
     <>

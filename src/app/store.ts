@@ -1,5 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import accountReducer from '../features/account/accountSlice';
+import notebooksReducer from '../features/notebooks/notebooksSlice';
+import notesReducer from '../features/notes/notesSlice';
 
 import { api } from './services/api';
 
@@ -7,6 +9,8 @@ export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     account: accountReducer,
+    notebooks: notebooksReducer,
+    notes: notesReducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(api.middleware),
   devTools: true

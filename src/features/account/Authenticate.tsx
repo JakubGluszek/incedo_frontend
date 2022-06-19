@@ -11,7 +11,6 @@ const Authenticate: React.FC = () => {
   const user = useAppSelector(selectCurrentUser)
 
   let content;
-
   if (user) {
     content = (
       <button className='btn-nav'
@@ -20,7 +19,6 @@ const Authenticate: React.FC = () => {
         <MdExpandMore size={32} />
       </button>
     )
-    // public header
   } else {
     content = (
       <Link to='/signin' className='btn-nav'>
@@ -30,11 +28,11 @@ const Authenticate: React.FC = () => {
   }
 
   return (
-    <>
+    <div className='w-full min-h-screen flex flex-col'>
       <Header>
         {content}
       </Header>
-      <main className=''>
+      <main className='grow flex flex-col'>
         <Outlet />
       </main>
       {user
@@ -45,7 +43,7 @@ const Authenticate: React.FC = () => {
           <p className='opacity-40 italic'>**Under construction**</p>
         </footer>
       }
-    </>
+    </div>
   )
 }
 

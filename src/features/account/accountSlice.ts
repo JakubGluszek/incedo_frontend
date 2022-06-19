@@ -13,13 +13,13 @@ const accountSlice = createSlice({
   reducers: {},
   extraReducers: builder => [
     builder.addMatcher(
-      accountApi.endpoints.getAccount.matchFulfilled,
+      accountApi.endpoints.fetchAccount.matchFulfilled,
       (state, { payload }) => {
         state.user = payload
       }
     ),
     builder.addMatcher(
-      accountApi.endpoints.signIn.matchFulfilled,
+      accountApi.endpoints.login.matchFulfilled,
       (state, { payload }) => {
         state.user = payload
       }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const animations = {
+const fade = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
   exit: { opacity: 0 },
@@ -9,13 +9,13 @@ const animations = {
 
 interface Props {
   children: React.ReactNode
-}
+};
 
-export const AnimatedPage: React.FC<Props> = ({ children }) => {
+export const FadeInPage: React.FC<Props> = ({ children }) => {
   return (
     <motion.div
-      className='w-full h-full flex flex-col'
-      variants={animations}
+      className='grow flex flex-col'
+      variants={fade}
       initial="initial"
       animate="animate"
       exit="exit"

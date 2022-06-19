@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
+import { MdLightMode, MdDarkMode } from 'react-icons/md';
+
 import { ThemeContext } from '../contexts/ThemeContext';
-import { MdLightMode, MdDarkMode } from 'react-icons/md'
 
 const ToggleTheme: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeContext)!;
@@ -10,8 +11,8 @@ const ToggleTheme: React.FC = () => {
       setTheme('light')
     } else {
       setTheme('dark')
-    }
-  }
+    };
+  };
 
   let content;
 
@@ -19,7 +20,7 @@ const ToggleTheme: React.FC = () => {
     content = <MdLightMode size={32} />
   } else {
     content = <MdDarkMode size={32} />
-  }
+  };
 
   return (
     <button className='btn-nav'
@@ -29,6 +30,6 @@ const ToggleTheme: React.FC = () => {
       {content}
     </button>
   )
-}
+};
 
 export default ToggleTheme;

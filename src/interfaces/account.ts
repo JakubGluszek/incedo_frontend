@@ -1,8 +1,8 @@
-export interface IGetToken {
+export interface IFetchToken {
   email: string
 }
 
-export interface ISignIn {
+export interface ILogin {
   token: string
 }
 

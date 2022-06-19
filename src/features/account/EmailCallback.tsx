@@ -1,12 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
-import { Navigate, useSearchParams } from 'react-router-dom';
-import { useGetTokenMutation, useSignInMutation } from '../../app/services/account';
+import { useSearchParams } from 'react-router-dom';
+import { useFetchTokenMutation, useLoginMutation } from '../../app/services/account';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useAppSelector } from '../../hooks/store';
-import { selectCurrentUser } from './accountSlice';
 import { MdEmail } from 'react-icons/md';
-import { AnimatedPage } from '../../components/layouts/AnimatedPages';
+import { FadeInPage } from '../../components/AnimatedPages';
 
 // Get token from ?token query
 // Try to sign in using token
@@ -14,20 +12,20 @@ import { AnimatedPage } from '../../components/layouts/AnimatedPages';
 // on fail: email input field & redirect home on submit
 const EmailCallback: React.FC = () => {
   const [params] = useSearchParams()
-  const [signIn, { isLoading }] = useSignInMutation()
+  const [login, { isLoading }] = useLoginMutation()
   const navigate = useNavigate()
 
   const signin = useCallback(async () => {
     const token = params.get("token")
     if (token) {
       try {
-        await signIn({ token }).unwrap()
+        await login({ token }).unwrap()
         navigate('/', { replace: true })
       } catch (err) {
         console.log(err)
       }
     }
-  }, [navigate, params, signIn])
+  }, [navigate, params, login])
 
   useEffect(() => {
     signin()
@@ -38,24 +36,19 @@ const EmailCallback: React.FC = () => {
   if (isLoading) {
     content = <h1>fetching</h1>
   } else {
-    content = <EnterEmail />
-  }
-
-  const user = useAppSelector(selectCurrentUser)
-  if (user) {
-    return <Navigate to='/' replace />
+    content = <TryAgain />
   }
 
   return content;
 }
 
-const EnterEmail: React.FC = () => {
+const TryAgain: React.FC = () => {
   const { handleSubmit, register, watch } = useForm()
   const navigate = useNavigate()
-  const [getToken, { isUninitialized }] = useGetTokenMutation()
+  const [fetchToken, { isUninitialized }] = useFetchTokenMutation()
 
   const onSubmit = async ({ email }: { [x: string]: string }) => {
-    await getToken({ email })
+    await fetchToken({ email })
   }
 
   let content;
@@ -95,11 +88,11 @@ const EnterEmail: React.FC = () => {
   }
 
   return (
-    <AnimatedPage>
+    <FadeInPage>
       <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center lg:text-lg'>
         {content}
       </div>
-    </AnimatedPage>
+    </FadeInPage>
   )
 }
 
