@@ -6,7 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { MdEmail } from 'react-icons/md'
 
 import { useFetchTokenMutation } from '../app/services/account';
-import { FadeInPage } from '../components/AnimatedPages';
+import { FadeInPage } from '../components/AnimatedPage';
 
 const SignInPage: React.FC = () => {
   const [fetchToken, { isUninitialized }] = useFetchTokenMutation()

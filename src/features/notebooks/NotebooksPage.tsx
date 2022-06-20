@@ -8,9 +8,9 @@ import { useAppSelector } from '../../hooks/store';
 import { useFetchNotebooksQuery } from '../../app/services/notebooks';
 import { selectAllNotebooks } from '../../features/notebooks/notebooksSlice';
 
-import { FadeInPage } from '../../components/AnimatedPages';
+import { FadeInPage } from '../../components/AnimatedPage';
 import NotebookPreview from './NotebookPreview';
-import BottomActionBar from '../../components/BottomActionBar';
+import ActionBar from '../../components/ActionBar';
 import NotebookCreate from './NotebookCreate';
 
 const NotebooksPage: React.FC = () => {
@@ -53,7 +53,7 @@ const NotebooksPage: React.FC = () => {
 				</div>
 			</div>
 
-			<BottomActionBar back='/'>
+			<ActionBar back='/'>
 				<button className={`btn-nav ${createNotebook ? 'active': ''}`}
 					onClick={() => setCreateNotebook(!createNotebook)}
 				>
@@ -65,7 +65,7 @@ const NotebooksPage: React.FC = () => {
 				<button className='btn-nav'>
 					<MdSearch className='w-6 h-6 sm:w-8 sm:h-8' />
 				</button>
-			</BottomActionBar>
+			</ActionBar>
 		</FadeInPage>
 	)
 };

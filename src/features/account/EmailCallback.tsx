@@ -4,7 +4,7 @@ import { useFetchTokenMutation, useLoginMutation } from '../../app/services/acco
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { MdEmail } from 'react-icons/md';
-import { FadeInPage } from '../../components/AnimatedPages';
+import { FadeInPage } from '../../components/AnimatedPage';
 
 // Get token from ?token query
 // Try to sign in using token

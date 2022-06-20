@@ -1,5 +1,5 @@
 import React from 'react';
-import { FadeInPage } from '../components/AnimatedPages';
+import { FadeInPage } from '../components/AnimatedPage';
 
 const SnippetsPage: React.FC = () => {
   return (

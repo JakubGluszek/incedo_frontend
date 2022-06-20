@@ -5,8 +5,8 @@ import { MdSearch } from 'react-icons/md';
 import { VscEdit, VscOpenPreview } from 'react-icons/vsc';
 
 import { useFetchNoteByIdQuery } from '../../app/services/notes';
-import { FadeInPage } from '../../components/AnimatedPages';
-import BottomActionBar from '../../components/BottomActionBar';
+import { FadeInPage } from '../../components/AnimatedPage';
+import ActionBar from '../../components/ActionBar';
 import Note from './Note';
 
 const NotePage: React.FC = () => {
@@ -38,7 +38,7 @@ const NotePage: React.FC = () => {
       </FadeInPage>
       {note
         ?
-        <BottomActionBar back={`/notebooks/${note.notebook_id}`}>
+        <ActionBar back={`/notebooks/${note.notebook_id}`}>
           <button className='btn-nav'
             onClick={() => setCanEdit(!canEdit)}
           >
@@ -51,7 +51,7 @@ const NotePage: React.FC = () => {
           <button className='btn-nav'>
             <MdSearch className='w-6 h-6 sm:w-8 sm:h-8' />
           </button>
-        </BottomActionBar>
+        </ActionBar>
         : null
       }
     </>

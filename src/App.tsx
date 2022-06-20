@@ -7,23 +7,22 @@ import { useFetchAccountQuery } from './app/services/account';
 import Authenticate from './features/account/Authenticate';
 import EmailCallback from './features/account/EmailCallback';
 import AuthRequired from './features/account/AuthRequired';
-
-import NotebooksPage from './features/notebooks/NotebooksPage';
-import NotebookPage from './features/notebooks/NotebookPage';
-import NotePage from './features/notes/NotePage';
+import AuthReject from './features/account/AuthReject';
 
 import SignInPage from './pages/SignInPage';
 import HomePage from './pages/HomePage';
-import PeoplesPage from './pages/PeoplePage';
 import SettingsPage from './pages/Settings';
 import ProfilePage from './pages/ProfilePage';
 import SnippetsPage from './pages/SnippetsPage';
-import DiscoursePage from './pages/DiscoursePage';
 import PrinciplesPage from './pages/PrinciplesPage';
 import TimersPage from './pages/TimersPage';
 import SessionsPage from './pages/SessionsPage';
 import BookmarksPage from './pages/BookmarksPage';
-import AuthReject from './features/account/AuthReject';
+import PeoplesPage from './pages/PeoplePage';
+import DiscoursePage from './pages/DiscoursePage';
+import NotebooksPage from './pages/NotebooksPage';
+import NotebookPage from './pages/NotebookPage';
+import NotePage from './pages/NotePage';
 
 
 const App: React.FC = () => {

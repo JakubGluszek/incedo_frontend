@@ -1,5 +1,5 @@
 import React from 'react';
-import { FadeInPage } from '../components/AnimatedPages';
+import { FadeInPage } from '../components/AnimatedPage';
 
 const IndexPage: React.FC = () => {
   return (

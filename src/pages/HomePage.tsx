@@ -19,7 +19,7 @@ import { TiArrowRight } from 'react-icons/ti';
 import { ImBooks } from 'react-icons/im';
 import { GoCommentDiscussion } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
-import { FadeInPage } from '../components/AnimatedPages';
+import { FadeInPage } from '../components/AnimatedPage';
 import { tryNavigate } from '../utils';
 
 const HomePage: React.FC = () => {
@@ -100,7 +100,6 @@ const HomePage: React.FC = () => {
           {section('People', '/people', <MdPeople size={32} />)}
           {section('Discourse', '/discourse', <GoCommentDiscussion size={32} />)}
         </div>
-
       </div>
     </FadeInPage>
   )

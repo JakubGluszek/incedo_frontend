@@ -9,9 +9,9 @@ import { useAppSelector } from '../../hooks/store';
 import { selectNotebookById } from './notebooksSlice';
 import { selectNotesByNotebookId } from '../notes/notesSlice';
 
-import { FadeInPage } from '../../components/AnimatedPages';
+import { FadeInPage } from '../../components/AnimatedPage';
 import NotePreview from '../notes/NotePreview';
-import BottomActionBar from '../../components/BottomActionBar';
+import ActionBar from '../../components/ActionBar';
 import useScrollTo from '../../hooks/useScrollTo';
 import NoteCreate from '../notes/NoteCreate';
 
@@ -125,7 +125,7 @@ const NotebookPage: React.FC = () => {
         {/* fixed botton action bar */}
       </FadeInPage>
 
-      <BottomActionBar back='/notebooks'>
+      <ActionBar back='/notebooks'>
         <button className={`btn-nav ${editMode ? 'active' : ''}`}
           onClick={() => setEditMode(!editMode)}
         >
@@ -139,7 +139,7 @@ const NotebookPage: React.FC = () => {
         <button className='btn-nav'>
           <MdSearch className='w-6 h-6 sm:w-8 sm:h-8' />
         </button>
-      </BottomActionBar>
+      </ActionBar>
     </>
   )
 };
