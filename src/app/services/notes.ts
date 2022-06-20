@@ -34,5 +34,9 @@ export const notesApi = api.injectEndpoints({
 })
 
 export const {
-  useFetchNoteByIdQuery
+  useFetchNoteByIdQuery,
+  useFetchNotesQuery,
+  useCreateNoteMutation,
+  useUpdateNoteMutation,
+  useDeleteNoteMutation
 } = notesApi;

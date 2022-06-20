@@ -9,7 +9,6 @@ export interface INote {
 };
 
 export interface INoteCreate {
-  label: string,
-  body?: string,
+  label: string | null,
   notebook_id: number
 };

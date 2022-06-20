@@ -43,10 +43,9 @@ const NotebookPreview: React.FC<Props> = ({ notebook }) => {
       {/* Section Content */}
       <div className='w-full h-fit flex flex-row gap-8 items-center'>
         {/* Notes previews */}
-        <div className='grow flex flex-row p-1 items-center gap-2 overflow-x-scroll scrollbar-hide'>
+        <div className='grow flex flex-row p-1 items-center gap-2 opacity-80 overflow-x-scroll scrollbar-hide'>
           {content}
         </div>
-
         {/* Navigate to note button */}
         <button className='hidden w-fit h-fit sm:flex items-center justify-center btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
           onClick={() => navigate(`/notebooks/${id}`)}

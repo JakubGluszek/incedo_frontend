@@ -72,7 +72,6 @@ const SignInPage: React.FC = () => {
     )
   }
 
-
   return (
     <FadeInPage>
       <div className='grow p-8 flex flex-col items-center justify-center gap-6 lg:text-xl'>

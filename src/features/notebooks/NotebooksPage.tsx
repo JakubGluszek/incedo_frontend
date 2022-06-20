@@ -5,7 +5,7 @@ import { MdAddBox, MdSearch } from 'react-icons/md';
 import { MdCancel } from 'react-icons/md';
 
 import { useAppSelector } from '../../hooks/store';
-import { useFetchNotebooksQuery, useUpdateNotebookMutation } from '../../app/services/notebooks';
+import { useFetchNotebooksQuery } from '../../app/services/notebooks';
 import { selectAllNotebooks } from '../../features/notebooks/notebooksSlice';
 
 import { FadeInPage } from '../../components/AnimatedPages';
@@ -40,9 +40,13 @@ const NotebooksPage: React.FC = () => {
 				{/* Page Heading */}
 				<div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
 					<ImBooks size={32} />
-					<span className='text-2xl'>Notebooks</span>
+					<h1>Notebooks</h1>
 				</div>
-				{createNotebook ? <NotebookCreate display={createNotebook} /> : null}
+				{createNotebook
+					?
+					<NotebookCreate display={createNotebook} setDisplay={setCreateNotebook} />
+					: null
+				}
 				{/* Notebooks Previews */}
 				<div className='w-full h-fit flex flex-col gap-4 sm:grid sm:grid-cols-2'>
 					{content}
@@ -50,7 +54,7 @@ const NotebooksPage: React.FC = () => {
 			</div>
 
 			<BottomActionBar back='/'>
-				<button className='btn-nav'
+				<button className={`btn-nav ${createNotebook ? 'active': ''}`}
 					onClick={() => setCreateNotebook(!createNotebook)}
 				>
 					{createNotebook

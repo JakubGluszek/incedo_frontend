@@ -19,20 +19,20 @@ const NotePreview: React.FC<Props> = ({ note }) => {
       onClick={() => tryNavigate(navigate, `/notebooks/${note.notebook_id}/${note.id}`)}
     >
       {/* heading */}
-      <div className='w-fit h-fit flex flex-row items-center gap-2'>
-        <ImFileText2 size={32} />
-        <span className='text-xl'>{note.label}</span>
+      <div className='w-full h-fit flex flex-row items-center gap-2'>
+        <ImFileText2 size={32} className='min-w-fit min-h-fit' />
+        <span className='text-xl break-all'>{note.label}</span>
       </div>
 
       {/* content */}
-      <div className='w-full h-fit flex flex-row items-center gap-8'>
+      <div className='w-full h-16 flex flex-row items-center justify-between'>
         {/* body snippet */}
-        <span className='text-nord3 dark:text-nord6 opacity-80 text-sm'>
-          {note.body.slice(0, 128)}...
+        <span className='text-nord3 dark:text-nord6 opacity-80 text-sm break-words'>
+          {note.body.slice(0, 96)}...
         </span>
         
         {/* navigate button */}
-        <button className='hidden w-fit h-fit sm:flex items-center justify-center btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
+        <button className='hidden w-fit h-full sm:flex items-center justify-center btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
           onClick={() => navigate(`/notebooks/${note.notebook_id}/${note.id}`)}
           aria-label='Navigate to "note" page'
         >
