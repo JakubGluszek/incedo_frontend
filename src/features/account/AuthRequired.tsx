@@ -11,7 +11,7 @@ const AuthRequired: React.FC = () => {
   return (
     user
       ? <Outlet />
-      : <Navigate to="/signin" />
+      : <Navigate to='/signin' />
   )
 }
 

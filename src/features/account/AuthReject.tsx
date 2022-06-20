@@ -10,7 +10,7 @@ const AuthReject: React.FC = () => {
 
   return (
     user
-      ? <Navigate to="/" />
+      ? <Navigate to='/' />
       : <Outlet />
   )
 }

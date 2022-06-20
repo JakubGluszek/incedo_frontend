@@ -1,10 +1,11 @@
 import React from 'react';
-import { MdExpandMore } from 'react-icons/md';
 import { Link, Outlet } from 'react-router-dom';
-import Header from '../../components/Header';
+
+import { MdExpandMore } from 'react-icons/md';
 
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
+import Header from '../../components/Header';
 
 // fetch current user, return content based on status
 const Authenticate: React.FC = () => {

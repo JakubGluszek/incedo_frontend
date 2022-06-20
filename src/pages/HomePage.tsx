@@ -20,7 +20,6 @@ import { ImBooks } from 'react-icons/im';
 import { GoCommentDiscussion } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
 import { FadeInPage } from '../components/AnimatedPage';
-import { tryNavigate } from '../utils';
 
 const HomePage: React.FC = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -30,7 +29,7 @@ const HomePage: React.FC = () => {
 
   const section = (title: string, to: string, icon: React.ReactElement) => (
     <div className='w-1/2 h-16 flex flex-row p-4 items-center justify-between gap-4 bg-white dark:bg-nord0  rounded-md cursor-pointer sm:cursor-default  hover:shadow-md hover:scale-[101%]'
-      onClick={() => tryNavigate(navigate, to)}
+      onClick={() => navigate(to)}
     >
       <div className='flex flex-row w-full items-center justify-between sm:w-fit gap-4'>
         {icon}

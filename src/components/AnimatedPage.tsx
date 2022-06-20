@@ -16,9 +16,9 @@ export const FadeInPage: React.FC<Props> = ({ children }) => {
     <motion.div
       className='grow'
       variants={fade}
-      initial="initial"
-      animate="animate"
-      exit="exit"
+      initial='initial'
+      animate='animate'
+      exit='exit'
       transition={{ duration: 0.4 }}
     >
       {children}

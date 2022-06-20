@@ -51,12 +51,12 @@ const NoteCreate: React.FC<Props> = ({ display, setDisplay, notebook_id }) => {
   return (
     <Transition
       show={display}
-      enter="transition-all duration-300"
-      enterFrom="opacity-0 scale-90 translate-x-16"
-      enterTo="opacity-100 scale-100"
-      leave="transition-all duration-300"
-      leaveFrom="opacity-100"
-      leaveTo="opacity-0 scale-90"
+      enter='transition-all duration-300'
+      enterFrom='opacity-0 scale-90 translate-x-16'
+      enterTo='opacity-100 scale-100'
+      leave='transition-all duration-300'
+      leaveFrom='opacity-100'
+      leaveTo='opacity-0 scale-90'
     >
       <div className='w-full h-fit flex flex-col gap-2 bg-white dark:bg-nord0 p-4 sm:p-8 rounded-md'>
         <div className='w-full h-fit flex flex-row gap-2 items-center'>

@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { accountApi } from "../../app/services/account";
-import { RootState } from "../../app/store";
-import { IStateAccount } from "../../interfaces";
+import { createSlice } from '@reduxjs/toolkit';
+import { accountApi } from '../../app/services/account';
+import { RootState } from '../../app/store';
+import { IStateAccount } from '../../interfaces';
 
 const initialState: IStateAccount = {
   user: null

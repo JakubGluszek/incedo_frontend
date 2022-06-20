@@ -1,4 +1,4 @@
-import { INote } from "../notes/interfaces";
+import { INote } from '../notes/interfaces';
 
 export interface IStateNotebook {
   id: number,

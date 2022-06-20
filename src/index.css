@@ -48,7 +48,7 @@
   }
 
   form {
-    @apply flex flex-col gap-4;
+    @apply flex flex-col gap-2;
   }
 
   input {
@@ -85,13 +85,13 @@
 
 @layer components {
   .submit {
-    @apply bg-nord9 hover:bg-nord10 py-1 px-4 border-none rounded-sm text-white dark:text-nord0 font-semibold tracking-wider cursor-pointer;
+    @apply bg-nord9 hover:bg-nord10 focus:bg-nord10 py-1 px-4 border-none rounded-sm text-white dark:text-nord0 font-semibold tracking-wider cursor-pointer;
   }
   .btn-nav {
     @apply p-2 rounded-md hover:bg-white dark:hover:bg-nord0;
   }
-  .active {
-    @apply bg-nord7 dark:bg-nord7 text-nord6 dark:text-nord0 hover:bg-nord8 dark:hover:bg-nord8;
+  .btn-action {
+    @apply min-w-fit min-h-fit p-2 rounded-md bg-nord9 opacity-80 hover:opacity-100 hover:bg-nord10 text-nord6 dark:text-dark-bg;
   }
 }
 

@@ -20,12 +20,12 @@ const Header: React.FC<Props> = ({ children }) => {
           <Link to='/' className='text-2xl font-bold tracking-widest p-2 hover:bg-white dark:hover:bg-nord0 rounded-md'>Incedo</Link>
           <Transition
             show={scrollTop > 80}
-            enter="transition-all duration-300"
-            enterFrom="opacity-0 -translate-y-8"
-            enterTo="opacity-100"
-            leave="transition-all duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0 -translate-y-8"
+            enter='transition-all duration-300'
+            enterFrom='opacity-0 -translate-y-8'
+            enterTo='opacity-100'
+            leave='transition-all duration-300'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0 -translate-y-8'
           >
             <button className='btn-nav text-nord7'
               onClick={() => scrollTo(0)}

@@ -16,7 +16,7 @@ const EmailCallback: React.FC = () => {
   const navigate = useNavigate()
 
   const signin = useCallback(async () => {
-    const token = params.get("token")
+    const token = params.get('token')
     if (token) {
       try {
         await login({ token }).unwrap()

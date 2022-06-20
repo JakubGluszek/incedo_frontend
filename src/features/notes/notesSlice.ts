@@ -1,8 +1,8 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { notebooksApi } from "../../app/services/notebooks";
-import { notesApi } from "../../app/services/notes";
-import { INote } from "../../interfaces";
-import { RootState } from "../../app/store";
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { notebooksApi } from '../../app/services/notebooks';
+import { notesApi } from '../../app/services/notes';
+import { INote } from '../../interfaces';
+import { RootState } from '../../app/store';
 
 
 export const notesAdapter = createEntityAdapter<INote>()

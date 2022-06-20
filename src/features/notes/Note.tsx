@@ -1,5 +1,5 @@
 import ReactCodeMirror from '@uiw/react-codemirror';
-import MarkdownPreview from "@uiw/react-markdown-preview";
+import MarkdownPreview from '@uiw/react-markdown-preview';
 import React, { useEffect, useState } from 'react';
 import { ImFileText2 } from 'react-icons/im';
 import { useUpdateNoteMutation } from '../../app/services/notes';

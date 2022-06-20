@@ -6,7 +6,7 @@ const baseQuery = fetchBaseQuery({
   credentials: 'include',
   prepareHeaders: (headers) => {
     const cookies = new Cookies()
-    headers.set("X-CSRF-TOKEN", cookies.get('csrf_access_token'))
+    headers.set('X-CSRF-TOKEN', cookies.get('csrf_access_token'))
     return headers
   }
 })
