@@ -15,13 +15,15 @@ interface Props {
 
 const NotebookCreate: React.FC<Props> = ({ display, setDisplay }) => {
   const [create] = useCreateNotebookMutation();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const [, scrollTo] = useScrollTo();
 
   const onSubmit = async (data: INotebookCreate) => {
     try {
       await create(data).unwrap()
       setDisplay(false)
+      setValue('label', '')
+      setValue('about', '')
     } catch (error) {
       console.log(error)
     }
@@ -43,7 +45,7 @@ const NotebookCreate: React.FC<Props> = ({ display, setDisplay }) => {
       leaveFrom='opacity-100'
       leaveTo='opacity-0 -translate-y-16'
     >
-      <div className='w-full h-fit flex flex-col gap-4 bg-white dark:bg-nord0 p-4 sm:p-8 rounded-md md:text-xl'>
+      <div className='max-w-sm md:max-w-screen-sm w-full mx-auto h-fit flex flex-col gap-4 bg-white dark:bg-nord0 p-4 sm:p-8 rounded-md md:text-xl'>
 
         <div className='w-full h-fit flex flex-row gap-2 items-center text-nord9'>
           <ImBook size={32} />

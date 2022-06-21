@@ -1,4 +1,6 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit';
+import { DropResult } from 'react-beautiful-dnd';
+
 import { notebooksApi } from '../../app/services/notebooks';
 import { RootState } from '../../app/store';
 import { IStateNotebook } from './interfaces';
@@ -13,7 +15,19 @@ const initialState = notebooksAdapter.getInitialState()
 const notebooksSlice = createSlice({
   name: 'notebooks',
   initialState,
-  reducers: {},
+  reducers: {
+    updateRanks: (state: EntityState<IStateNotebook>, action: { payload: DropResult }) => {
+      // update notebook at destination index with source notebook's rank
+      for (const [key, value] of Object.entries(state.entities)) {
+        if (value?.rank === action.payload.destination?.index) {
+          value!.rank = action.payload.source.index
+        }
+      }
+      // update source notebook rank with destination index
+      let notebook_id = parseInt(action.payload.draggableId.split('-')[1])
+      state.entities[notebook_id]!.rank = action.payload.destination?.index!
+    }
+  },
   extraReducers: builder => {
     builder.addMatcher(
       notebooksApi.endpoints.fetchNotebooks.matchFulfilled,
@@ -35,14 +49,12 @@ const notebooksSlice = createSlice({
       notebooksApi.endpoints.deleteNotebook.matchFulfilled,
       notebooksAdapter.removeOne
     )
-    builder.addMatcher(
-      notebooksApi.endpoints.updateNotebooksRanks.matchFulfilled,
-      notebooksAdapter.upsertMany
-    )
   }
 })
 
 export default notebooksSlice.reducer;
+
+export const notebooksActions = notebooksSlice.actions;
 
 export const {
   selectById: selectNotebookById,

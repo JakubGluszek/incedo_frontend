@@ -9,7 +9,7 @@ const baseQuery = fetchBaseQuery({
     headers.set('X-CSRF-TOKEN', cookies.get('csrf_access_token'))
     return headers
   }
-})
+});
 
 const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions)
@@ -24,9 +24,9 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
   }
 
   return result;
-}
+};
 
 export const api = createApi({
   baseQuery: baseQueryWithReauth,
   endpoints: builder => ({})
-})
+});
