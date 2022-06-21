@@ -7,7 +7,7 @@ interface Props {
 
 const ActionBar: React.FC<Props> = ({ children }) => {
   return (
-    <motion.div className='fixed bottom-0 w-screen h-16 md:h-20 bg-nord6 dark:bg-dark-bg'
+    <motion.div className='z-50 fixed bottom-0 w-screen h-16 md:h-20 bg-nord6 dark:bg-dark-bg'
       initial={{ opacity: 0, bottom: -200 }}
       animate={{ opacity: 1, bottom: 0 }}
       exit={{ opacity: 0, bottom: -200 }}

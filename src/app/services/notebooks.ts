@@ -33,7 +33,10 @@ export const notebooksApi = api.injectEndpoints({
       query: (id) => ({
         url: `/notebooks/${id}`,
         method: 'DELETE'
-      })
+      }),
+      transformResponse: (response, meta, arg) => {
+        return (arg)
+      }
     }),
     updateNotebooksRanks: builder.mutation<IStateNotebook[], INotebookUpdateRank>({
       query: (update) => ({

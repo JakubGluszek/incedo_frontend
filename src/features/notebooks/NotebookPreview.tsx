@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd';
 
 import { ImBook } from 'react-icons/im';
-import { MdDelete, MdDragHandle, MdKeyboardArrowRight } from 'react-icons/md';
+import { MdCancel, MdDelete, MdDragHandle, MdKeyboardArrowRight } from 'react-icons/md';
 
 import { IStateNotebook } from './interfaces';
+import { useDeleteNotebookMutation } from '../../app/services/notebooks';
+import { motion } from 'framer-motion';
 
 interface Props {
   editMode: boolean,
@@ -13,12 +15,22 @@ interface Props {
 };
 
 const NotebookPreview: React.FC<Props> = ({ notebook, editMode }) => {
+  const [removeNotebook] = useDeleteNotebookMutation();
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
   const navigate = useNavigate();
+
+  const deleteNotebook = () => {
+    if (confirmDelete) {
+      removeNotebook(notebook.id)
+    }
+    setConfirmDelete(!confirmDelete)
+  }
 
   return (
     <Draggable draggableId={`notebook-${notebook.id}`} index={notebook.rank}>
-      {provided => (
-        <div className='w-full max-w-sm md:max-w-none h-40 '
+      {(provided, snapshot) => (
+        <div className={`w-full md:max-w-none h-40 ${snapshot.isDragging ? 'shadow-xl' : null}`}
           {...provided.draggableProps}
           ref={provided.innerRef}
         >
@@ -30,7 +42,7 @@ const NotebookPreview: React.FC<Props> = ({ notebook, editMode }) => {
 
             <div className='w-full h-full pt-2'>
               {!editMode
-                ?
+                ? // Default
                 <div className='w-full h-full flex flex-row items-center justify-between gap-2'>
                   <div {...provided.dragHandleProps} className='hidden'></div>
                   <div className='h-full flex flex-row items-center'>
@@ -47,23 +59,37 @@ const NotebookPreview: React.FC<Props> = ({ notebook, editMode }) => {
                     <MdKeyboardArrowRight className='w-4 h-4 md:w-6 md:h-6' />
                   </button>
                 </div>
-                :
-                <div className='w-full h-full flex flex-row items-center justify-between'>
-                  <button className='btn-action'>
+                : // Edit mode
+                <div className='w-full h-full flex flex-row items-center justify-between gap-2'>
+                  <button className='z-10 btn-action' onClick={() => deleteNotebook()}>
                     <MdDelete className='w-6 h-6 md:w-8 md:h-8' />
                   </button>
-                  <div className='btn-action'
-                    {...provided.dragHandleProps}
-                  >
+                  {confirmDelete
+                    ?
+                    <motion.div className='grow flex flex-row items-center justify-between'
+                      initial={{opacity: 0, translateY: -32}}
+                      animate={{opacity: 1, translateY: 0}}
+                      transition={{duration: 0.3}}
+                    >
+                      <span className='text-center'>Press again to confirm.</span>
+                      <button className='btn-action' onClick={() => setConfirmDelete(!confirmDelete)}>
+                        <MdCancel className='w-6 h-6 md:w-8 md:h-8' />
+                      </button>
+                    </motion.div>
+                    : null
+                  }
+                  <div className='btn-action' {...provided.dragHandleProps}>
                     <MdDragHandle className='w-6 h-6 md:w-8 md:h-8' />
                   </div>
+
                 </div>
               }
             </div>
           </div>
         </div>
-      )}
-    </Draggable>
+      )
+      }
+    </Draggable >
   )
 };
 

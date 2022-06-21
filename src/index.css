@@ -81,6 +81,10 @@
   body::-webkit-scrollbar-thumb {
     @apply bg-white dark:bg-nord0;
   }
+
+  svg {
+    @apply min-w-fit min-h-fit;
+  }
 }
 
 @layer components {
@@ -91,7 +95,7 @@
     @apply p-2 rounded-md hover:bg-white dark:hover:bg-nord0;
   }
   .btn-action {
-    @apply min-w-fit min-h-fit p-2 rounded-md bg-nord9 opacity-80 hover:opacity-100 hover:bg-nord10 text-nord6 dark:text-nord0;
+    @apply p-2 flex flex-row items-center gap-2 rounded-md bg-nord9 opacity-80 hover:opacity-100 hover:bg-nord10 text-nord6 dark:text-nord0;
   }
 }
 

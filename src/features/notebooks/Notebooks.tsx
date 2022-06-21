@@ -24,12 +24,14 @@ const Notebooks: React.FC<Props> = ({ editMode }) => {
   };
 
   const onDragEnd = (result: DropResult) => {
-    if (result.source.index !== result.destination?.index) {
-      dispatch(notebooksActions.updateRanks(result))
-
-      const notebook_id = parseInt(result.draggableId.split('-')[1])
-      update({ id: notebook_id, rank: result.destination!.index })
-    };
+    if (result.destination) {
+      if (result.source.index !== result.destination?.index) {
+        dispatch(notebooksActions.updateRanks(result))
+  
+        const notebook_id = parseInt(result.draggableId.split('-')[1])
+        update({ id: notebook_id, rank: result.destination!.index })
+      };
+    }
   };
 
   var sorted = notebooks.sort((a, b) => a.rank - b.rank)
@@ -39,7 +41,7 @@ const Notebooks: React.FC<Props> = ({ editMode }) => {
     <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
       <Droppable droppableId='notebooks'>
         {provided => (
-          <motion.div className='w-full max-w-screen-sm mx-auto h-fit flex flex-col gap-4 items-center'
+          <motion.div className='w-full h-fit flex flex-col space-y-4'
             ref={provided.innerRef}
             {...provided.droppableProps}
             initial={{ opacity: 0 }}

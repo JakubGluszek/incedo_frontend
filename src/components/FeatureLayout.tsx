@@ -11,7 +11,7 @@ interface Props {
 const FeatureLayout: React.FC<Props> = ({ children, actions }) => {
   return (
     <FadeInPage>
-      <div className='max-w-screen-md w-full mx-auto flex flex-col gap-8 px-6 pb-20 md:pb-24 overflow-x-hidden'>
+      <div className='max-w-screen-sm w-full mx-auto flex flex-col gap-8 px-6 pb-20 md:pb-24 overflow-x-hidden'>
         {children}
       </div>
       <ActionBar>
