@@ -35,6 +35,10 @@ const notebooksSlice = createSlice({
       notebooksApi.endpoints.deleteNotebook.matchFulfilled,
       notebooksAdapter.removeOne
     )
+    builder.addMatcher(
+      notebooksApi.endpoints.updateNotebooksRanks.matchFulfilled,
+      notebooksAdapter.upsertMany
+    )
   }
 })
 

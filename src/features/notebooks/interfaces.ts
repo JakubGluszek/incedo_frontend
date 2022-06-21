@@ -5,7 +5,7 @@ export interface IStateNotebook {
   label: string,
   rank: number,
   about: string | null,
-}
+};
 
 export interface INotebook {
   id: number,
@@ -13,9 +13,14 @@ export interface INotebook {
   rank: number,
   about: string | null,
   notes: INote[]
-}
+};
 
 export interface INotebookCreate {
   label?: string,
   about?: string
-}
+};
+
+export interface INotebookUpdateRank {
+  id: number,
+  rank: number
+};

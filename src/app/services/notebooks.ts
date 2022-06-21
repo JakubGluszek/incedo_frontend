@@ -3,7 +3,8 @@ import {
   IFetchById,
   INotebook,
   INotebookCreate,
-  IStateNotebook
+  IStateNotebook,
+  INotebookUpdateRank
 } from '../../interfaces';
 
 export const notebooksApi = api.injectEndpoints({
@@ -33,6 +34,13 @@ export const notebooksApi = api.injectEndpoints({
         url: `/notebooks/${id}`,
         method: 'DELETE'
       })
+    }),
+    updateNotebooksRanks: builder.mutation<IStateNotebook[], INotebookUpdateRank>({
+      query: (update) => ({
+        url: '/notebooks/ranks',
+        method: 'POST',
+        body: update
+      })
     })
   })
 })
@@ -42,5 +50,6 @@ export const {
   useFetchNotebookByIdQuery,
   useCreateNotebookMutation,
   useUpdateNotebookMutation,
-  useDeleteNotebookMutation
+  useDeleteNotebookMutation,
+  useUpdateNotebooksRanksMutation
 } = notebooksApi;
