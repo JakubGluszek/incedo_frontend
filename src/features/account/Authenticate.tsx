@@ -7,35 +7,28 @@ import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
 import Header from '../../components/Header';
 
-// fetch current user, return content based on status
 const Authenticate: React.FC = () => {
   const user = useAppSelector(selectCurrentUser)
 
-  let content;
-  if (user) {
-    content = (
-      <button className='btn-nav'
-        aria-label='Expand Navbar'
-      >
-        <MdExpandMore size={32} />
-      </button>
-    )
-  } else {
-    content = (
-      <Link to='/signin' className='btn-nav'>
-        <span>Sign in</span>
-      </Link>
-    )
-  }
-
   return (
-    <div className='full min-h-screen flex flex-col'>
+    <div className='w-full min-h-screen flex flex-col'>
       <Header>
-        {content}
+        {user
+          ?
+          <button className='btn-nav' aria-label='Expand Navbar'>
+            <MdExpandMore size={32} />
+          </button>
+          :
+          <Link to='/signin' className='btn-nav'>
+            <span>Sign in</span>
+          </Link>
+        }
       </Header>
+
       <main className='grow flex flex-col'>
         <Outlet />
       </main>
+
       {user
         ? null
         :

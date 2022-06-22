@@ -7,9 +7,7 @@ module.exports = {
     extend: {
       transitionProperty: {
         'height': 'height',
-      },
-      transitionProperty: {
-        'width': 'width'
+        'width': 'width',
       },
       colors: {
         'light-bg': 'var(--light-bg)',
