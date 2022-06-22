@@ -34,7 +34,7 @@ const NotebookPreview: React.FC<Props> = ({ notebook, editMode }) => {
           {...provided.draggableProps}
           ref={provided.innerRef}
         >
-          <div className='w-full h-full flex flex-col divide-y-2 divide-nord dark:divide-nord3 bg-white dark:bg-nord0 p-4 rounded-md hover:shadow-md'>
+          <div className='w-full h-full flex flex-col divide-y-2 divide-nord dark:divide-nord3 bg-white dark:bg-nord1 p-4 rounded-md hover:shadow-md'>
             <div className='w-full h-12 flex flex-row gap-2 py-2 items-center'>
               <ImBook className='w-6 h-6 md:w-8 md:h-8 min-w-fit min-h-fit' />
               <h4 className='break-all font-bold'>{notebook.label}</h4>
@@ -53,10 +53,10 @@ const NotebookPreview: React.FC<Props> = ({ notebook, editMode }) => {
                       }
                     </p>
                   </div>
-                  <button className='btn-action w-fit h-fit bg-transparent border-2 border-nord7 text-nord7 dark:text-nord7 hover:bg-nord8 hover:text-white dark:hover:text-nord0'
+                  <button className='p-1 rounded-md w-fit h-fit bg-transparent border-2 border-nord7 text-nord7 dark:text-nord7 hover:bg-nord8 hover:text-white dark:hover:text-nord0'
                     onClick={() => navigate(`/notebooks/${notebook.id}`)}
                   >
-                    <MdKeyboardArrowRight className='w-4 h-4 md:w-6 md:h-6' />
+                    <MdKeyboardArrowRight className='w-6 h-6 md:w-8 md:h-8' />
                   </button>
                 </div>
                 : // Edit mode

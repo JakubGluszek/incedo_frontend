@@ -14,7 +14,7 @@ interface Props {
 const Header: React.FC<Props> = ({ children }) => {
   const [scrollTop, scrollTo] = useScrollTo();
   return (
-    <header className={`z-50 sticky top-0 w-full bg-nord6 dark:bg-dark-bg transition-height duration-300 ${scrollTop < 80 ? 'h-16': 'h-20 shadow-md shadow-slate-200/50 dark:shadow-black/10'}`}>
+    <header className={`z-50 sticky top-0 w-full bg-nord6 dark:bg-dark_bg transition-height duration-300 ${scrollTop < 80 ? 'h-16': 'h-20 shadow-md shadow-slate-200/50 dark:shadow-black/10'}`}>
       <div className='px-6 max-w-screen-lg m-auto h-full flex flex-row items-center justify-between'>
         <div className='flex flex-row items-center gap-1 sm:gap-4'>
           <Link to='/' className='text-2xl font-bold tracking-widest p-2 hover:bg-white dark:hover:bg-nord0 rounded-md'>Incedo</Link>

@@ -10,8 +10,8 @@ module.exports = {
         'width': 'width',
       },
       colors: {
-        'light-bg': 'var(--light-bg)',
-        'dark-bg': 'var(--dark-bg)',
+        'dark_bg': 'var(--dark-bg)',
+        light_nord0: 'var(--light-nord0)',
         nord0: 'var(--nord0)',
         nord1: 'var(--nord1)',
         nord2: 'var(--nord2)',

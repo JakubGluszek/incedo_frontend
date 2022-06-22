@@ -1,62 +1,80 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { SegmentedControl } from '@mantine/core';
+
+import { MdArrowDownward, MdArrowUpward } from 'react-icons/md';
 
 import { useAppSelector } from '../../hooks/store';
-import { useUpdateNotebooksRanksMutation } from '../../app/services/notebooks';
-import { notebooksActions, selectAllNotebooks } from './notebooksSlice';
-import NotebookPreview from './NotebookPreview';
+import { selectAllNotebooks } from './notebooksSlice';
+import NotebooksList from './NotebooksList';
+
+type Sort = 'rank' | 'created' | 'edited'
 
 interface Props {
   editMode: boolean
 };
 
 const Notebooks: React.FC<Props> = ({ editMode }) => {
-  const [update] = useUpdateNotebooksRanksMutation();
   const notebooks = useAppSelector(selectAllNotebooks);
-  const dispatch = useDispatch();
 
-  const onDragStart = () => {
-    if (window.navigator.vibrate) {
-      window.navigator.vibrate(40);
-    }
+  const [reverse, setReverse] = useState(false);
+  const [sort, setSort] = useState<Sort>('rank')
+
+  useEffect(() => {
+    if (editMode) {
+      setSort('rank')
+      setReverse(false);
+    };
+  }, [editMode])
+
+  let sorted;
+  switch (sort) {
+    case 'created':
+      sorted = notebooks.sort((a, b) => a.created_at - b.created_at);
+      break;
+    case 'edited':
+      sorted = notebooks.sort((a, b) => b.edited_at - a.edited_at);
+      break;
+    default:
+      sorted = notebooks.sort((a, b) => a.rank - b.rank)
+      break;
   };
 
-  const onDragEnd = (result: DropResult) => {
-    if (result.destination) {
-      if (result.source.index !== result.destination?.index) {
-        dispatch(notebooksActions.updateRanks(result))
-  
-        const notebook_id = parseInt(result.draggableId.split('-')[1])
-        update({ id: notebook_id, rank: result.destination!.index })
-      };
-    }
+  if (reverse) {
+    sorted = sorted.reverse();
   };
-
-  var sorted = notebooks.sort((a, b) => a.rank - b.rank)
-  var previews = sorted.map(n => <NotebookPreview key={n.id} notebook={n} editMode={editMode} />)
 
   return (
-    <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
-      <Droppable droppableId='notebooks'>
-        {provided => (
-          <motion.div className='w-full h-fit flex flex-col space-y-4'
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            {previews.length > 0
-              ? sorted.map(n => <NotebookPreview key={n.id} notebook={n} editMode={editMode} />)
-              : <span>no notebooks yet.. try creating one</span>
-            }
-            {provided.placeholder}
-          </motion.div>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <>
+      {/* sorting section */}
+      <div className='w-full max-w-sm mx-auto h-fit flex flex-row items-center justify-between gap-4'>
+        <SegmentedControl
+          classNames={{
+            root: 'dark:bg-nord0 flex flex-row flex-wrap',
+            active: 'bg-white dark:bg-nord1',
+            label: 'text-nord0 dark:text-white',
+          }}
+          styles={{
+            control: {borderWidth: '0px !important'}
+          }}
+          value={sort}
+          onChange={(value: Sort) => setSort(value)}
+          data={[
+            { label: 'My order', value: 'rank' },
+            { label: 'Creation date', value: 'created' },
+            { label: 'Most recent', value: 'edited' }
+          ]}
+        />
+        <button className='rounded-md h-full p-1 bg-transparent hover:bg-nord8 text-nord7 border-2 border-nord7 hover:border-nord8 hover:text-nord6 dark:hover:text-dark_bg'
+          onClick={() => setReverse(!reverse)}>
+          {reverse
+            ? <MdArrowUpward size={24} />
+            : <MdArrowDownward size={24} />
+          }
+        </button>
+      </div>
+
+      <NotebooksList notebooks={sorted} editMode={editMode} />
+    </>
   )
 };
 

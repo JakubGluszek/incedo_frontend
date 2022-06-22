@@ -4,6 +4,7 @@
 
 :root {
   --dark-bg: #242933;
+  --light-nord0: #f1f3f5;
   --nord0: #2E3440;
   --nord1: #3B4252;
   --nord2: #434C5E;
@@ -24,11 +25,11 @@
 
 @layer base {
   html {
-    @apply min-h-screen w-screen overflow-x-hidden overflow-y-scroll;
+    @apply min-h-screen w-full overflow-x-hidden overflow-y-scroll;
   }
 
   body {
-    @apply w-screen h-full bg-nord6 dark:bg-dark-bg text-nord0 dark:text-nord6;
+    @apply w-full h-full bg-nord6 dark:bg-dark_bg text-nord0 dark:text-nord6;
   }
 
   #root {

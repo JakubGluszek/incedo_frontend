@@ -45,7 +45,7 @@ const NotebookCreate: React.FC<Props> = ({ display, setDisplay }) => {
       leaveFrom='opacity-100'
       leaveTo='opacity-0 -translate-y-16'
     >
-      <div className='w-full mx-auto h-fit flex flex-col gap-4 bg-white dark:bg-nord0 p-4 sm:p-8 rounded-md md:text-xl'>
+      <div className='w-full max-w-sm mx-auto h-fit flex flex-col gap-4 bg-white dark:bg-nord0 p-4 sm:p-8 rounded-md md:text-xl'>
 
         <div className='w-full h-fit flex flex-row gap-2 items-center text-nord9'>
           <ImBook size={32} />

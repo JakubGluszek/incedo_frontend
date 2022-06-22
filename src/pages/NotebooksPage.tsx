@@ -28,10 +28,10 @@ const NotebooksPage: React.FC = () => {
 
   const actions = (
     <>
-      <button className='btn-action bg-nord7 hover:bg-nord8'
+      <button className='btn-action p-1 bg-nord7 hover:bg-nord8'
         onClick={() => navigate('/')}
       >
-        <MdKeyboardArrowLeft className='w-6 h-6 md:w-8 md:h-8' />
+        <MdKeyboardArrowLeft className='w-8 h-8 md:w-10 md:h-10' />
       </button>
       <button className='btn-action'
         onClick={() => setEditMode(!editMode)}

@@ -5,14 +5,8 @@ export interface IStateNotebook {
   label: string,
   rank: number,
   about: string | null,
-};
-
-export interface INotebook {
-  id: number,
-  label: string,
-  rank: number,
-  about: string | null,
-  notes: INote[]
+  created_at: number,
+  edited_at: number
 };
 
 export interface INotebookCreate {

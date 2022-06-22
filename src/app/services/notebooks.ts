@@ -1,28 +1,32 @@
 import { api } from './api';
 import {
   IFetchById,
-  INotebook,
   INotebookCreate,
   IStateNotebook,
-  INotebookUpdateRank
+  INotebookUpdateRank,
+  INote
 } from '../../interfaces';
+
+interface NotebookResponse extends IStateNotebook {
+  notes: INote[]
+};
 
 export const notebooksApi = api.injectEndpoints({
   endpoints: builder => ({
-    fetchNotebooks: builder.query<INotebook[], any>({
+    fetchNotebooks: builder.query<NotebookResponse[], any>({
       query: () => '/notebooks'
     }),
-    fetchNotebookById: builder.query<INotebook, IFetchById>({
+    fetchNotebookById: builder.query<NotebookResponse, IFetchById>({
       query: ({ id }) => `/notebooks/${id}`
     }),
-    createNotebook: builder.mutation<INotebook, INotebookCreate>({
+    createNotebook: builder.mutation<NotebookResponse, INotebookCreate>({
       query: (notebook) => ({
         url: '/notebooks',
         method: 'POST',
         body: notebook
       })
     }),
-    updateNotebook: builder.mutation<INotebook, IStateNotebook>({
+    updateNotebook: builder.mutation<NotebookResponse, IStateNotebook>({
       query: (notebook) => ({
         url: `/notebooks/${notebook.id}`,
         method: 'PUT',
