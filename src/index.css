@@ -90,7 +90,7 @@
 
 @layer components {
   .submit {
-    @apply bg-nord9 hover:bg-nord10 focus:bg-nord10 py-1 px-4 border-none rounded-sm text-white dark:text-nord0 font-semibold tracking-wider cursor-pointer;
+    @apply bg-nord9 hover:bg-nord10 focus:bg-nord10 py-1 px-4 border-none rounded-md text-white dark:text-nord0 font-semibold tracking-wider cursor-pointer;
   }
   .btn-nav {
     @apply p-2 rounded-md hover:bg-white dark:hover:bg-nord0;

@@ -19,6 +19,12 @@ export const notebooksApi = api.injectEndpoints({
     fetchNotebookById: builder.query<NotebookResponse, IFetchById>({
       query: ({ id }) => `/notebooks/${id}`
     }),
+    fetchNotebooksSearch: builder.query<NotebookResponse[], string>({
+      query: (search) => ({
+        url: `/notebooks?search=${search}`,
+        method: 'GET'
+      })
+    }),
     createNotebook: builder.mutation<NotebookResponse, INotebookCreate>({
       query: (notebook) => ({
         url: '/notebooks',
@@ -55,6 +61,7 @@ export const notebooksApi = api.injectEndpoints({
 export const {
   useFetchNotebooksQuery,
   useFetchNotebookByIdQuery,
+  useFetchNotebooksSearchQuery,
   useCreateNotebookMutation,
   useUpdateNotebookMutation,
   useDeleteNotebookMutation,

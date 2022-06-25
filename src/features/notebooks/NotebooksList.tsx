@@ -10,10 +10,11 @@ import { notebooksActions } from './notebooksSlice';
 
 interface Props {
   notebooks: IStateNotebook[],
-  editMode: boolean
+  editMode: boolean,
+  searching: boolean
 }
 
-const NotebooksList: React.FC<Props> = ({ notebooks, editMode }) => {
+const NotebooksList: React.FC<Props> = ({ notebooks, editMode, searching }) => {
   const [update] = useUpdateNotebooksRanksMutation();
   const dispatch = useDispatch();
 
@@ -40,7 +41,7 @@ const NotebooksList: React.FC<Props> = ({ notebooks, editMode }) => {
     <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
       <Droppable droppableId='notebooks'>
         {provided => (
-          <motion.div className='w-full h-fit flex flex-col space-y-4 bg-light_nord0 dark:bg-nord0 rounded-md p-2 sm:p-4 md:p-6'
+          <motion.div className='w-full h-fit flex flex-col space-y-4 rounded-md p-2'
             ref={provided.innerRef}
             {...provided.droppableProps}
             initial={{ opacity: 0 }}
@@ -49,7 +50,7 @@ const NotebooksList: React.FC<Props> = ({ notebooks, editMode }) => {
           >
             {previews.length > 0
               ? previews
-              : <span>no notebooks yet.. try creating one</span>
+              : <span className='text-center'>{searching ? 'no results found': 'no notebooks'}</span>
             }
             {provided.placeholder}
           </motion.div>

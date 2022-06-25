@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Loader } from '@mantine/core';
 
 import { useFetchAccountQuery } from './app/services/account';
 
@@ -30,7 +31,11 @@ const App: React.FC = () => {
   const { isUninitialized, isLoading } = useFetchAccountQuery({});
 
   if (isUninitialized || isLoading) {
-    return <span>fetching account</span>
+    return (
+      <div className='fixed w-full h-full flex items-center justify-center'>
+        <Loader color='white' size="xl" variant="bars" />
+      </div>
+    )
   };
 
   return (
