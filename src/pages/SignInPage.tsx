@@ -6,7 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { MdEmail } from 'react-icons/md'
 
 import { useFetchTokenMutation } from '../app/services/account';
-import { FadeInPage } from '../components/AnimatedPage';
+import { AnimatedPage } from '../components/AnimatedPage';
 
 const SignInPage: React.FC = () => {
   const [fetchToken, { isUninitialized }] = useFetchTokenMutation()
@@ -73,11 +73,11 @@ const SignInPage: React.FC = () => {
   }
 
   return (
-    <FadeInPage>
+    <AnimatedPage>
       <div className='grow p-8 flex flex-col items-center justify-center gap-6 lg:text-xl'>
         {content}
       </div>
-    </FadeInPage>
+    </AnimatedPage>
   )
 };
 

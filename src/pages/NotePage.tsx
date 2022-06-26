@@ -1,11 +1,11 @@
 import React from 'react';
-import { FadeInPage } from '../components/AnimatedPage';
+import { AnimatedPage } from '../components/AnimatedPage';
 
 const NotePage: React.FC = () => {
   return (
-    <FadeInPage>
+    <AnimatedPage>
       <h1>Note here</h1>
-    </FadeInPage>
+    </AnimatedPage>
   )
 };
 

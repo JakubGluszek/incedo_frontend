@@ -1,62 +1,60 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Loader } from '@mantine/core';
 
 import { ImBooks } from 'react-icons/im';
 import { VscOpenPreview } from 'react-icons/vsc';
 import {
   MdAdd,
   MdEdit,
-  MdKeyboardArrowLeft,
   MdRemove,
   MdSearch
 } from 'react-icons/md';
+import { BsArrowLeftShort } from 'react-icons/bs';
 
 import NotebookCreate from '../features/notebooks/NotebookCreate';
 import Notebooks from '../features/notebooks/Notebooks';
-import PageHeading from '../components/PageHeading';
 import FeatureLayout from '../components/FeatureLayout';
 import { useFetchNotebooksQuery } from '../app/services/notebooks';
 
+// fetch notebooks, handle page actions
 const NotebooksPage: React.FC = () => {
   const { isUninitialized, isLoading } = useFetchNotebooksQuery({});
 
   const [displaySearch, setDisplaySearch] = useState(false);
   const [displayCreate, setDisplayCreate] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  // set sorting to be by rank when in editMode
 
   const navigate = useNavigate();
 
   const actions = (
     <>
-      <button className='btn-action p-1 bg-nord7 hover:bg-nord8'
+      <button className='btn-action'
         onClick={() => navigate('/')}
       >
-        <MdKeyboardArrowLeft className='w-8 h-8 md:w-10 md:h-10' />
+        <BsArrowLeftShort className='' />
       </button>
-      <button className='btn-action'
+      <button className={`btn-action hover:bg-nord10 dark:hover:bg-nord10 ${editMode && 'bg-nord10'}`}
         onClick={() => setEditMode(!editMode)}
       >
         {editMode
-          ? <VscOpenPreview className='w-6 h-6 md:w-8 md:h-8' />
-          : <MdEdit className='w-6 h-6 md:w-8 md:h-8' />
+          ? <VscOpenPreview className='' />
+          : <MdEdit className='' />
         }
       </button>
-      <button className='btn-action'
+      <button className={`btn-action hover:bg-nord10 dark:hover:bg-nord10 ${displayCreate && 'bg-nord10'}`}
         onClick={() => setDisplayCreate(!displayCreate)}
       >
         {displayCreate
-          ? <MdRemove className='w-6 h-6 md:w-8 md:h-8' />
-          : <MdAdd className='w-6 h-6 md:w-8 md:h-8' />
+          ? <MdRemove className='' />
+          : <MdAdd className='' />
         }
       </button>
-      <button className='btn-action bg-nord7 hover:bg-nord8'
+      <button className={`btn-action ${displaySearch && 'bg-nord8'}`}
         onClick={() => setDisplaySearch(!displaySearch)}
       >
         {displaySearch
-          ? <MdRemove className='w-6 h-6 md:w-8 md:h-8' />
-          : <MdSearch className='w-6 h-6 md:w-8 md:h-8' />
+          ? <MdRemove className='' />
+          : <MdSearch className='' />
         }
       </button>
     </>
@@ -64,15 +62,16 @@ const NotebooksPage: React.FC = () => {
 
   return (
     <FeatureLayout actions={actions}>
-      <PageHeading
-        icon={<ImBooks size={32} className='min-w-6 min-h-6' />}
-        content={'Notebooks'}
-      />
+      <div className='heading'>
+        <ImBooks size={32} className='min-w-6 min-h-6' />
+        <h1>Notebooks</h1>
+      </div>
       <NotebookCreate display={displayCreate} setDisplay={setDisplayCreate} />
-      {isUninitialized || isLoading
-        ? <Loader color='white' size="xl" variant="bars" />
-        : <Notebooks editMode={editMode} displaySearch={displaySearch} />
-      }
+      <Notebooks
+        editMode={editMode}
+        displaySearch={displaySearch}
+        loading={isUninitialized || isLoading}
+      />
     </FeatureLayout>
   )
 };

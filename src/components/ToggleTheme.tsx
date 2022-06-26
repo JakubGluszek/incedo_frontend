@@ -23,7 +23,7 @@ const ToggleTheme: React.FC = () => {
   };
 
   return (
-    <button className='btn-nav'
+    <button className='btn'
       aria-label='Toggle Theme'
       onClick={() => toggle()}
     >

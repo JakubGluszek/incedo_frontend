@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-import { MdExpandMore } from 'react-icons/md';
-
 import { useAppSelector } from '../../hooks/store';
 import { selectCurrentUser } from './accountSlice';
 import Header from '../../components/Header';
@@ -13,25 +11,14 @@ const Authenticate: React.FC = () => {
   return (
     <div className='w-full min-h-screen flex flex-col'>
       <Header>
-        {user
-          ?
-          <button className='btn-nav' aria-label='Expand Navbar'>
-            <MdExpandMore size={32} />
-          </button>
-          :
-          <Link to='/signin' className='btn-nav'>
+        {!user &&
+          <Link to='/signin' className='btn'>
             <span>Sign in</span>
           </Link>
         }
       </Header>
-
-      <main className='grow flex flex-col'>
-        <Outlet />
-      </main>
-
-      {user
-        ? null
-        :
+      <Outlet />
+      {!user &&
         <footer className='w-full flex flex-col items-center justify-center'>
           <span>© 2022 Incedo, Inc.</span>
           <p className='opacity-40 italic'>**Under construction**</p>

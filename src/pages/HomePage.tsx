@@ -19,7 +19,7 @@ import { TiArrowRight } from 'react-icons/ti';
 import { ImBooks } from 'react-icons/im';
 import { GoCommentDiscussion } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
-import { FadeInPage } from '../components/AnimatedPage';
+import { AnimatedPage } from '../components/AnimatedPage';
 import { tryNavigate } from '../utils';
 
 const HomePage: React.FC = () => {
@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
         {icon}
         <span>{title}</span>
       </div>
-      <button className='hidden sm:block btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
+      <button className='hidden sm:block btn bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
         onClick={() => navigate(to)}
         aria-label='Navigate to "people" page'
       >
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
   )
 
   return (
-    <FadeInPage>
+    <AnimatedPage>
       <div className='max-w-screen-sm w-full mx-auto h-fit flex flex-col py-8 px-6 gap-4 text-sm sm:text-base'>
 
         <div className='flex flex-row gap-2 items-center text-nord3 dark:text-nord4'>
@@ -101,7 +101,7 @@ const HomePage: React.FC = () => {
           {section('Discourse', '/discourse', <GoCommentDiscussion size={32} />)}
         </div>
       </div>
-    </FadeInPage>
+    </AnimatedPage>
   )
 };
 

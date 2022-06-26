@@ -41,7 +41,7 @@ const NotebooksList: React.FC<Props> = ({ notebooks, editMode, searching }) => {
     <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
       <Droppable droppableId='notebooks'>
         {provided => (
-          <motion.div className='w-full h-fit flex flex-col space-y-4 rounded-md p-2'
+          <motion.div className='w-full h-fit flex flex-col space-y-4 rounded-md'
             ref={provided.innerRef}
             {...provided.droppableProps}
             initial={{ opacity: 0 }}

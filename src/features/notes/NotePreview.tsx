@@ -32,7 +32,7 @@ const NotePreview: React.FC<Props> = ({ note }) => {
         </span>
         
         {/* navigate button */}
-        <button className='hidden w-fit h-full sm:flex items-center justify-center btn-nav bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
+        <button className='hidden w-fit h-full sm:flex items-center justify-center btn bg-nord9 text-white hover:bg-nord10 dark:text-nord0 dark:hover:bg-nord10'
           onClick={() => navigate(`/notebooks/${note.notebook_id}/${note.id}`)}
           aria-label='Navigate to "note" page'
         >

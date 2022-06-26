@@ -1,11 +1,11 @@
 import React from 'react';
-import { FadeInPage } from '../components/AnimatedPage';
+import { AnimatedPage } from '../components/AnimatedPage';
 
 const NotebookPage: React.FC = () => {
   return (
-    <FadeInPage>
+    <AnimatedPage>
       <h1>Notebook here</h1>
-    </FadeInPage>
+    </AnimatedPage>
   )
 };
 

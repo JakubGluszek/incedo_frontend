@@ -55,7 +55,6 @@ const NotebookCreate: React.FC<Props> = ({ display, setDisplay }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor='label'>Label</label>
           <input className='text-lg'
-            autoFocus
             id='label'
             type='text'
             maxLength={32}

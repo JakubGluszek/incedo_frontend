@@ -13,18 +13,18 @@ type Sort = 'rank' | 'created' | 'edited'
 
 interface Props {
   editMode: boolean,
-  displaySearch: boolean
+  displaySearch: boolean,
+  loading: boolean
 };
 
-const Notebooks: React.FC<Props> = ({ editMode, displaySearch }) => {
+const Notebooks: React.FC<Props> = ({ editMode, displaySearch, loading }) => {
   const [search, setSearch] = useState<string | null>(null);
-  const { data, refetch } = useFetchNotebooksSearchQuery(search!, { refetchOnMountOrArgChange: true });
+  const { data, refetch, isFetching } = useFetchNotebooksSearchQuery(search!, { refetchOnMountOrArgChange: true });
 
   const notebooks = useAppSelector(selectAllNotebooks);
 
-
   const [reverse, setReverse] = useState(false);
-  const [sort, setSort] = useState<Sort>('rank')
+  const [sort, setSort] = useState<Sort>('rank');
 
   useEffect(() => {
     if (editMode) {
@@ -38,7 +38,7 @@ const Notebooks: React.FC<Props> = ({ editMode, displaySearch }) => {
     collection = [...data];
   } else {
     collection = [...notebooks];
-  }
+  };
 
   let sorted;
   switch (sort) {
@@ -57,39 +57,44 @@ const Notebooks: React.FC<Props> = ({ editMode, displaySearch }) => {
     sorted = collection.reverse();
   };
 
+  const sortingSection = (
+    <div className='w-full flex flex-row items-center justify-between gap-2 py-2'>
+      <SegmentedControl
+        classNames={{
+          root: 'dark:bg-nord0 flex flex-row flex-wrap',
+          active: 'bg-white dark:bg-nord1',
+          label: 'text-nord0 dark:text-white',
+        }}
+        styles={{
+          control: { borderWidth: '0px !important' }
+        }}
+        value={sort}
+        onChange={(value: Sort) => setSort(value)}
+        data={[
+          { label: 'My order', value: 'rank' },
+          { label: 'Creation date', value: 'created' },
+          { label: 'Most recent', value: 'edited' }
+        ]}
+      />
+
+      <button className='btn-action'
+        onClick={() => setReverse(!reverse)}>
+        {reverse
+          ? <MdArrowUpward size={24} />
+          : <MdArrowDownward size={24} />
+        }
+      </button>
+    </div>
+  )
+
   return (
     <>
-      <NotebooksSearch display={displaySearch} setSearch={setSearch} />
-
-      {/* sorting section */}
-      <div className='w-full mx-auto h-fit flex flex-row items-center justify-between gap-4 p-2'>
-        <SegmentedControl
-          classNames={{
-            root: 'dark:bg-nord0 flex flex-row flex-wrap',
-            active: 'bg-white dark:bg-nord1',
-            label: 'text-nord0 dark:text-white',
-          }}
-          styles={{
-            control: { borderWidth: '0px !important' }
-          }}
-          value={sort}
-          onChange={(value: Sort) => setSort(value)}
-          data={[
-            { label: 'My order', value: 'rank' },
-            { label: 'Creation date', value: 'created' },
-            { label: 'Most recent', value: 'edited' }
-          ]}
-        />
-        <button className='rounded-md h-full p-1 bg-transparent hover:bg-nord8 text-nord7 border-2 border-nord7 hover:border-nord8 hover:text-nord6 dark:hover:text-dark_bg'
-          onClick={() => setReverse(!reverse)}>
-          {reverse
-            ? <MdArrowUpward size={24} />
-            : <MdArrowDownward size={24} />
-          }
-        </button>
-      </div>
-
-      <NotebooksList notebooks={sorted} editMode={editMode} searching={displaySearch} />
+      <NotebooksSearch display={displaySearch} setSearch={setSearch} search={search}/>
+      {sortingSection}
+      {loading || isFetching
+        ? <span>loading</span>
+        : <NotebooksList notebooks={sorted} editMode={editMode} searching={displaySearch} />
+      }
     </>
   )
 };

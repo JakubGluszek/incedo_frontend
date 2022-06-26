@@ -25,7 +25,7 @@ import NotebooksPage from './pages/NotebooksPage';
 import NotebookPage from './pages/NotebookPage';
 import NotePage from './pages/NotePage';
 
-
+// fetch user, then render components based on path & user
 const App: React.FC = () => {
   const location = useLocation();
   const { isUninitialized, isLoading } = useFetchAccountQuery({});

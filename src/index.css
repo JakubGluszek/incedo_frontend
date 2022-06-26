@@ -72,7 +72,7 @@
 
   /* Scroll bar */
   body::-webkit-scrollbar {
-    width: 1em;
+    width: 0.5rem;
   }
   
   body::-webkit-scrollbar-track {
@@ -84,7 +84,7 @@
   }
 
   svg {
-    @apply min-w-fit min-h-fit;
+    @apply min-w-fit min-h-fit w-6 h-6 md:w-8 md:h-8;
   }
 }
 
@@ -92,11 +92,29 @@
   .submit {
     @apply bg-nord9 hover:bg-nord10 focus:bg-nord10 py-1 px-4 border-none rounded-md text-white dark:text-nord0 font-semibold tracking-wider cursor-pointer;
   }
-  .btn-nav {
-    @apply p-2 rounded-md hover:bg-white dark:hover:bg-nord0;
+  .btn {
+    @apply p-1 rounded-md hover:bg-white dark:hover:bg-nord0;
   }
   .btn-action {
-    @apply p-2 flex flex-row items-center gap-2 rounded-md bg-nord9 opacity-80 hover:opacity-100 hover:bg-nord10 text-nord6 dark:text-nord0;
+    @apply btn bg-nord7 transition-all duration-150 ease-in hover:bg-nord8 dark:hover:bg-nord8  hover:scale-105 text-white dark:text-nord0;
+  }
+  .wrapper {
+    @apply px-2 sm:px-6 mx-auto w-full;
+  }
+  .wrapper-lg {
+    @apply wrapper max-w-screen-lg;
+  }
+  .wrapper-md {
+    @apply wrapper max-w-screen-md;
+  }
+  .wrapper-sm {
+    @apply wrapper max-w-screen-sm;
+  }
+  .heading {
+    @apply w-full h-fit flex flex-row items-center justify-center py-2 gap-4 text-nord3 dark:text-nord4;
+  }
+  .card {
+    @apply bg-white dark:bg-nord0 p-4 rounded-md hover:shadow-md;
   }
 }
 

@@ -4,7 +4,7 @@ import { useFetchTokenMutation, useLoginMutation } from '../../app/services/acco
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { MdEmail } from 'react-icons/md';
-import { FadeInPage } from '../../components/AnimatedPage';
+import { AnimatedPage } from '../../components/AnimatedPage';
 
 // Get token from ?token query
 // Try to sign in using token
@@ -88,11 +88,11 @@ const TryAgain: React.FC = () => {
   }
 
   return (
-    <FadeInPage>
+    <AnimatedPage>
       <div className='grow p-6 flex flex-col items-center justify-center gap-4 text-center lg:text-lg'>
         {content}
       </div>
-    </FadeInPage>
+    </AnimatedPage>
   )
 }
 
