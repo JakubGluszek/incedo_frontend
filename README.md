@@ -5,13 +5,13 @@
 * [ ] redux store
   * [*] api
     * [*] handle csrf token
-  * [ ] services
+  * [x] services
     * [x] account
-    * [ ] notes_folders
-    * [ ] notes
+    * [x] notes_folders
+    * [x] notes
   * [ ] account feature
     * [x] account reducer
   * [ ] notes_folders feature
-    * [ ] notes folders reducer
+    * [x] notes folders reducer
   * [ ] notes feature
-    * [ ] notes reducer
+    * [x] notes reducer

@@ -6,7 +6,7 @@ import { accountApi } from '../../app/services/account';
 
 const initialState: AccountState = {
   user: null
-}
+};
 
 const accountSlice = createSlice({
   name: 'account',
@@ -26,7 +26,7 @@ const accountSlice = createSlice({
       }
     )
   }
-})
+});
 
 export default accountSlice.reducer;
 
