@@ -2,11 +2,16 @@
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}"
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./features/**/*.{js,ts,jsx,tsx}",
   ],
   //darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "mitr": ["Mitr"],
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {

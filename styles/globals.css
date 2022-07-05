@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-mitr overflow-x-hidden;
+  }
+  body {
+    @apply text-base-content;
+  }
+}

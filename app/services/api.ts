@@ -1,10 +1,8 @@
 import { createApi, fetchBaseQuery, BaseQueryFn } from '@reduxjs/toolkit/query/react';
 import Cookies from 'universal-cookie';
 
-console.log(process.env.API)
-
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.API,
+  baseUrl: process.env.NEXT_PUBLIC_API,
   credentials: 'include',
   prepareHeaders: (headers) => {
     const cookies = new Cookies()

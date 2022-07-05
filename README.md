@@ -15,3 +15,7 @@
     * [x] notes folders reducer
   * [ ] notes feature
     * [x] notes reducer
+
+* [ ] Themes
+  * [ ] Add custom light / dark theme as default theme
+  * [ ] Handle multiple themes
