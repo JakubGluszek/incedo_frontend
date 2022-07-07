@@ -1,18 +1,24 @@
 import '../styles/globals.css';
-import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 
-import { store } from '../app/store';
 import { MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+import { store } from '../app/store';
+import { AppPropsWithLayout } from '../types';
+import { accountApi } from '../app/services/account';
+
+store.dispatch(accountApi.endpoints.fetchUser.initiate({}))
+
+const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
     <MantineProvider>
       <NotificationsProvider>
         <Provider store={store}>
-          <Component {...pageProps} />
+          {getLayout(<Component {...pageProps} />)}
         </Provider>
       </NotificationsProvider>
     </MantineProvider>

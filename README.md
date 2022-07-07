@@ -19,3 +19,9 @@
 * [ ] Themes
   * [ ] Add custom light / dark theme as default theme
   * [ ] Handle multiple themes
+
+* [ ] Notes UI
+  * [ ] Sidebar
+    * [ ] Display folders & sub folders
+      * [ ] On click change page to that folder
+  * [ ] Note page

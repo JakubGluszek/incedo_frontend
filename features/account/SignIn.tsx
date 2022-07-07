@@ -46,6 +46,12 @@ const SignIn: React.FC<Props> = ({ setEnterToken }) => {
         <div>
           <label className='label'>
             <span className="label-text">Email</span>
+            <span
+              className='label-text-alt badge badge-secondary cursor-pointer'
+              onClick={() => setEnterToken(true)}
+            >
+              I have the token
+            </span>
           </label>
           <input
             className='input input-bordered w-full'
@@ -54,13 +60,14 @@ const SignIn: React.FC<Props> = ({ setEnterToken }) => {
           />
         </div>
         <input
-          className={`btn text-primary-content ${email.length == 0 ? 'btn-disabled' : ''}`}
+          className={`btn ${email.length === 0 ? 'btn-disabled' : 'btn-primary text-primary-content'}`}
           type='submit'
+          value='get token'
         />
       </form>
       <div className='divider'>or</div>
       <a
-        className='btn btn-primary flex gap-2'
+        className='btn btn-primary btn-outline flex gap-2'
         href={`${process.env.NEXT_PUBLIC_API}/account/auth/signin/google`}
       >
         <FcGoogle size={24} />

@@ -2,7 +2,7 @@ import { showNotification } from '@mantine/notifications';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSignInMutation } from '../../app/services/account';
+import { useFetchUserQuery, useSignInMutation } from '../../app/services/account';
 
 interface Props {
   token: string | string[] | undefined,
@@ -11,6 +11,8 @@ interface Props {
 
 const SendToken: React.FC<Props> = ({ token, setDisplay }) => {
   const [signIn, { isLoading, isSuccess, isError }] = useSignInMutation();
+  useFetchUserQuery({}, { skip: !(!isLoading && isSuccess) })
+
   const router = useRouter();
 
   const handleSignIn = useCallback(async (token: string) => {
@@ -36,6 +38,7 @@ const SendToken: React.FC<Props> = ({ token, setDisplay }) => {
           title: 'text-base-content'
         }
       })
+      router.push('/login')
     }
   }, [signIn, router])
 
@@ -61,7 +64,7 @@ const SendToken: React.FC<Props> = ({ token, setDisplay }) => {
         <label className='label'>
           <span className='label-text'>Token</span>
           <span
-            className='label-text-alt cursor-pointer badge badge-ghost'
+            className='label-text-alt cursor-pointer badge badge-secondary'
             onClick={() => setDisplay(false)}
           >
             Resend
@@ -71,6 +74,7 @@ const SendToken: React.FC<Props> = ({ token, setDisplay }) => {
           defaultValue={token ? token : ''}
           className='input input-bordered w-full'
           type='text'
+          autoComplete='off'
           {...register('token', { required: true })}
         />
       </div>

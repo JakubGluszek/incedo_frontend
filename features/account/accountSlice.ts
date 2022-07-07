@@ -5,7 +5,7 @@ import { RootState } from '../../app/store';
 import { accountApi } from '../../app/services/account';
 
 const initialState: AccountState = {
-  user: null
+  user: undefined
 };
 
 const accountSlice = createSlice({
@@ -20,9 +20,15 @@ const accountSlice = createSlice({
       }
     )
     builder.addMatcher(
+      accountApi.endpoints.fetchUser.matchRejected,
+      (state) => {
+        state.user = null
+      }
+    )
+    builder.addMatcher(
       accountApi.endpoints.signOut.matchFulfilled,
       state => {
-        state = initialState
+        state.user = null
       }
     )
   }

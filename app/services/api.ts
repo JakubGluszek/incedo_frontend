@@ -11,7 +11,7 @@ const baseQuery = fetchBaseQuery({
   }
 })
 
-const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
+export const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions)
   // 403 == access_token.expired && refresh_token
   if (result?.error?.status === 403) {

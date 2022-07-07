@@ -1,25 +1,34 @@
-import type { NextPage } from 'next';
-import { useFetchUserQuery } from '../app/services/account';
-import Navbar from '../components/Navbar';
+import React from 'react';
 
+import { NextPageWithLayout } from '../types';
+import { useAppSelector } from '../hooks/store';
+import { selectCurrentUser } from '../features/account/accountSlice';
+import Layout from '../components/Layout';
+import Welcome from './welcome';
 
-const Home: NextPage = () => {
-  const { data: user } = useFetchUserQuery({})
+const Home: NextPageWithLayout = () => {
+  const [hasMounted, setHasMounted] = React.useState(false);
+  const user = useAppSelector(selectCurrentUser);
+
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted || !user) {
+    return <Welcome />
+  }
 
   return (
-    <div className='w-full flex flex-row'>
-      {/* left bar */}
-      <div className='w-full md:max-w-xs lg:max-w-sm hidden md:flex flex-col'>
-        <div className='sticky top-0 w-full h-screen flex flex-col'>
-          {/* sign in form used in /login page */}
-        </div>
-      </div>
-      {/* content */}
-      <div className='grow flex flex-col'>
-        <Navbar user={user} />
-      </div>
+    <div>
+      <p>private home page</p>
     </div>
   )
 };
+
+Home.getLayout = page => (
+  <Layout>
+    {page}
+  </Layout>
+)
 
 export default Home;

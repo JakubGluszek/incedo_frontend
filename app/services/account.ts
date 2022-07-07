@@ -27,11 +27,12 @@ export const accountApi = api.injectEndpoints({
         method: 'POST',
         body: { email }
       })
+      
     }),
     fetchUser: builder.query<User, any>({
       query: () => '/account/user'
     }),
-    signOut: builder.query({
+    signOut: builder.mutation({
       query: () => ({
         url: '/account/auth',
         method: 'DELETE'
@@ -44,5 +45,5 @@ export const {
   useSignInMutation,
   useFetchTokenMutation,
   useFetchUserQuery,
-  useSignOutQuery
+  useSignOutMutation
 } = accountApi;
