@@ -48,3 +48,9 @@ export interface UpdateRank {
 export interface RemoveMulti {
   [x: string]: number[]
 }
+
+type Type = 'folder' | 'note'
+
+export type CustomData = {
+  type: Type
+}

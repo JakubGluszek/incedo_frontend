@@ -1,10 +1,16 @@
+import { useFetchNoteFoldersQuery } from '../app/services/noteFolders';
+import { useFetchNotesQuery } from '../app/services/notes';
 import Layout from '../components/Layout';
+import NoteTree from '../features/notes/NoteTree';
 import { NextPageWithLayout } from '../types';
 
 const Notes: NextPageWithLayout = () => {
+  useFetchNoteFoldersQuery({});
+  useFetchNotesQuery({});
+
   return (
     <div>
-      <h1>notes here</h1>
+      <NoteTree />
     </div>
   )
 };
