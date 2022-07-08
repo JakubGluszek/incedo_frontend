@@ -1,4 +1,4 @@
-import { MdFolder, MdNote } from "react-icons/md";
+import { MdFolder, MdTextSnippet } from "react-icons/md";
 
 type Props = {
   droppable: boolean;
@@ -12,7 +12,7 @@ export const TypeIcon: React.FC<Props> = (props) => {
 
   switch (props.fileType) {
     case 'note':
-      return <MdNote />;
+      return <MdTextSnippet />;
     default:
       return null;
   }

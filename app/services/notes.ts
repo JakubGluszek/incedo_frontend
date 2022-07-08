@@ -1,5 +1,5 @@
 import { api } from './api';
-import { Note, RemoveMulti, UpdateRank } from '../../types';
+import { Note, RemoveMulti, NotesUpdateRank } from '../../types';
 
 interface NoteCreate {
   label: string,
@@ -56,7 +56,7 @@ export const notesApi = api.injectEndpoints({
       }),
       transformResponse: (r, meta, arg) => arg.notes_ids
     }),
-    updateNoteRank: builder.mutation<any, UpdateRank>({
+    notesUpdateRank: builder.mutation<any, NotesUpdateRank>({
       query: update => ({
         url: '/notes/ranks',
         method: 'POST',
@@ -73,5 +73,5 @@ export const {
   useUpdateNoteMutation,
   useRemoveNoteQuery,
   useRemoveMultiNotesMutation,
-  useUpdateNoteRankMutation
+  useNotesUpdateRankMutation
 } = notesApi;

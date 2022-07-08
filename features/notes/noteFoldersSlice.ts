@@ -1,6 +1,6 @@
 import { createSlice, createEntityAdapter, EntityState } from '@reduxjs/toolkit';
 
-import { NoteFolder, UpdateRank } from '../../types';
+import { NoteFolder, NotesUpdateRank } from '../../types';
 import { RootState } from '../../app/store';
 import { noteFoldersApi } from '../../app/services/noteFolders';
 
@@ -12,7 +12,7 @@ const noteFoldersSlice = createSlice({
   name: 'noteFolders',
   initialState,
   reducers: {
-    updateRank: (state: EntityState<NoteFolder>, action: { payload: UpdateRank }) => {
+    updateRank: (state: EntityState<NoteFolder>, action: { payload: NotesUpdateRank }) => {
       // 'optimistic' rank update
       return
     }

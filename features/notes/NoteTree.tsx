@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { DndProvider } from "react-dnd";
 import {
   Tree,
@@ -7,68 +7,49 @@ import {
   getBackendOptions
 } from "@minoru/react-dnd-treeview";
 import { CustomData } from "../../types";
-import { useAppSelector } from "../../hooks/store";
-import { selectAllNotes } from "./notesSlice";
-import { selectAllNoteFolders } from "./noteFoldersSlice";
 import NoteTreeNode from "./NoteTreeNode";
-
+import CustomDragPreview from "./CustomDragPreview";
+import { Placeholder } from "./Placeholder";
+import useNotesTree from "./useNotesTree";
 
 const NoteTree: React.FC = () => {
-  const noteFolders = useAppSelector(selectAllNoteFolders);
-  const notes = useAppSelector(selectAllNotes);
-
-  const [treeData, setTreeData] = React.useState<NodeModel<CustomData>[]>([]);
-  const handleDrop = (newTree: NodeModel<CustomData>[]) => {
-    console.log(newTree)
-    setTreeData(newTree)
-  };
-
-  useEffect(() => {
-    let nodes: NodeModel<CustomData>[] = [];
-    nodes.push(...noteFolders.map<NodeModel<CustomData>>(n => ({
-      id: `folder-${n.id}`,
-      parent: n.parent_id ? `folder-${n.parent_id}` : 0,
-      text: n.label,
-      droppable: true,
-      data: {
-        type: 'folder'
-      }
-    })))
-
-    nodes.push(...notes.map<NodeModel<CustomData>>(n => ({
-      id: `note-${n.id}`,
-      parent: `folder-${n.note_folder_id}`,
-      text: n.label,
-      droppable: false,
-      data: {
-        type: 'note'
-      }
-    })))
-
-    setTreeData(nodes)
-    console.log(nodes)
-  }, [notes, noteFolders])
+  const { treeData, handleDrop } = useNotesTree();
 
   return (
     <DndProvider backend={MultiBackend} options={getBackendOptions()}>
-      <div className='p-4 bg-neutral'>
-        <Tree
-          tree={treeData}
-          rootId={0}
-          render={(
-            node: NodeModel<CustomData>,
-            { depth, isOpen, onToggle }
-          ) => (
-            <NoteTreeNode
-              node={node}
-              depth={depth}
-              isOpen={isOpen}
-              onToggle={onToggle}
-            />
-          )}
-          onDrop={handleDrop}
-        />
-      </div>
+      <Tree
+        tree={treeData}
+        rootId={0}
+        render={(
+          node: NodeModel<CustomData>,
+          { depth, isOpen, onToggle }
+        ) => (
+          <NoteTreeNode
+            node={node}
+            depth={depth}
+            isOpen={isOpen}
+            onToggle={onToggle}
+          />
+        )}
+        dragPreviewRender={(monitorProps) => (
+          <CustomDragPreview monitorProps={monitorProps} />
+        )}
+        sort={false}
+        insertDroppableFirst={false}
+        onDrop={handleDrop}
+        canDrop={(tree, { dragSource, dropTargetId, dropTarget }) => {
+          if (dropTarget?.droppable && dragSource?.id !== dropTargetId) {
+            if (!dragSource?.droppable && dropTarget === undefined) {
+              return false
+            }
+            return true;
+          }
+        }}
+        dropTargetOffset={2}
+        placeholderRender={(node, { depth }) => (
+          <Placeholder node={node} depth={depth} />
+        )}
+      />
     </DndProvider>
   );
 }

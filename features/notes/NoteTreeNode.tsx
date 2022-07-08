@@ -1,5 +1,5 @@
 import { NodeModel, useDragOver } from "@minoru/react-dnd-treeview";
-import { MdArrowRight } from "react-icons/md";
+import { RiArrowRightSFill, RiArrowDownSFill } from "react-icons/ri";
 import { CustomData } from "../../types";
 import { TypeIcon } from "./NodeTypeIcon";
 
@@ -23,8 +23,8 @@ const NoteTreeNode: React.FC<Props> = (props) => {
 
   return (
     <div
-      className='flex flex-row'
-      style={{ paddingInlineStart: indent }}
+      className='h-10 w-full flex flex-row items-center gap-1'
+      style={{ paddingInlineStart: data?.type === 'note' ? indent + 16 : indent }}
       {...dragOverProps}
     >
       <div
@@ -32,12 +32,15 @@ const NoteTreeNode: React.FC<Props> = (props) => {
       >
         {props.node.droppable && (
           <div onClick={handleToggle}>
-            <MdArrowRight />
+            {props.isOpen
+              ? <RiArrowDownSFill />
+              : <RiArrowRightSFill />
+            }
           </div>
         )}
       </div>
       <div>
-        <TypeIcon droppable={droppable!} fileType={data?.type} />
+        <TypeIcon droppable={droppable || false} fileType={data?.type} />
       </div>
       <div className=''>
         <span>{props.node.text}</span>

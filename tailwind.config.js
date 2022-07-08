@@ -9,9 +9,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "mitr": ["Mitr"],
-      },
+        "ubuntuMono": ["Ubuntu Mono"],
+      }
     },
+    transitionProperty: {
+      width: 'width',
+      height: 'height'
+    }
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {

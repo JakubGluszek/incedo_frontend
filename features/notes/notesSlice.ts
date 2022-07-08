@@ -1,6 +1,6 @@
 import { createSlice, createEntityAdapter, EntityState } from '@reduxjs/toolkit';
 
-import { Note, UpdateRank } from '../../types';
+import { Note, NotesUpdateRank } from '../../types';
 import { RootState } from '../../app/store';
 import { notesApi } from '../../app/services/notes';
 
@@ -12,7 +12,7 @@ const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    updateRank: (state: EntityState<Note>, action: { payload: UpdateRank }) => {
+    updateRank: (state: EntityState<Note>, action: { payload: NotesUpdateRank }) => {
       // 'optimistic' rank update
       return
     }

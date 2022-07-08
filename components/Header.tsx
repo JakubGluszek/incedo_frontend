@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import { showNotification } from '@mantine/notifications';
@@ -79,7 +78,7 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
             <MdClose className='swap-on' size={20} />
           </label>
         </div>
-        <div className="navbar-center md:hidden">
+        <div className="navbar-center">
           <Link href='/'>
             <span className="btn btn-ghost normal-case text-xl">Incedo</span>
           </Link>
@@ -89,7 +88,7 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <Image src={user?.avatar! ? user.avatar : '/dummy'} alt={user?.username ? user.username : 'dummy'} width={32} height={32} className='avatar rounded-full' />
             </label>
-            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 border-2 border-neutral">
+            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 border-2 border-base-200">
               <li>
                 <Link href='/settings'>
                   <div className='w-full h-fit flex flex-row items-center justify-evenly'>
@@ -99,13 +98,13 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
                 </Link>
               </li>
               <li>
-                <button
-                  className='btn btn-ghost'
+                <div
+                  className='w-full h-fit flex flex-row items-center justify-evenly btn btn-ghost hover:btn-primary'
                   onClick={() => handleSignOut()}
                 >
                   <MdLogout size={20} />
                   <span>Sign out</span>
-                </button>
+                </div>
               </li>
             </ul>
           </div>
@@ -115,7 +114,7 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
   }
 
   return (
-    <div className="sticky top-0 navbar bg-base-100 max-w-screen-lg w-full mx-auto border-b-2 border-neutral">
+    <div className="z-50 sticky top-0 navbar bg-base-100 w-full mx-auto border-b-[1px] border-base-200">
       {content}
     </div>
   )

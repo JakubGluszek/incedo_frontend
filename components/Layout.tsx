@@ -15,7 +15,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       {/* menu content */}
       <Menu showMobile={viewMobileSide} setShowMobile={setViewMobileSide} />
       {/* main content */}
-      <div className='grow flex flex-col gap-2'>
+      <div className='grow flex flex-col'>
         <Header
           viewMenu={viewMobileSide}
           setViewMenu={setViewMobileSide}
