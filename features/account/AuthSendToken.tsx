@@ -1,7 +1,8 @@
-import { showNotification } from '@mantine/notifications';
-import { useRouter } from 'next/router';
 import React, { useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { showNotification } from '@mantine/notifications';
+
 import { useFetchUserQuery, useSignInMutation } from '../../app/services/account';
 
 interface Props {

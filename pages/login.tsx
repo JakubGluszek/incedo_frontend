@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -5,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useAppSelector } from '../hooks/store';
 import { selectCurrentUser } from '../features/account/accountSlice';
 import Auth from '../features/account/Auth';
-import { useEffect } from 'react';
 
 const Login: NextPage = () => {
   const router = useRouter()

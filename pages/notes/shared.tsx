@@ -1,5 +1,5 @@
-import Layout from '../../components/Layout';
 import { NextPageWithLayout } from '../../types';
+import Layout from '../../components/Layout';
 
 const SharedNotes: NextPageWithLayout = () => {
   return (

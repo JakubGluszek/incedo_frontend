@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import SendToken from './SendToken';
-import SignIn from './SignIn';
+import SendToken from './AuthSendToken';
+import SignIn from './AuthSignIn';
 
 interface Props {
   token: string | string[] | undefined

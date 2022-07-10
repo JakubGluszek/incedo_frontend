@@ -39,27 +39,18 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
 
   let content;
 
-  if (!hasMounted) {
-    // initial return
-    content = (
-      <div className="navbar-center">
-        <Link href='/'>
-          <span className="btn btn-ghost normal-case text-xl">Incedo</span>
-        </Link>
-      </div>
-    )
-  } else if (!user) {
+  if (!hasMounted || !user) {
     // there is no current user
     content = (
       <>
         <div className="navbar-start md:hidden">
           <Link href='/'>
-            <span className="btn btn-ghost normal-case text-xl">Incedo</span>
+            <a className="btn btn-ghost normal-case text-xl">Incedo</a>
           </Link>
         </div>
         <div className="navbar-end ml-auto">
           <Link href='/login'>
-            <span className="btn btn-ghost normal-case text-xl">Login</span>
+            <a className="btn btn-ghost normal-case text-xl">Login</a>
           </Link>
         </div>
       </>
@@ -78,23 +69,23 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
             <MdClose className='swap-on' size={20} />
           </label>
         </div>
-        <div className="navbar-center">
+        <div className="navbar-center md:hidden">
           <Link href='/'>
-            <span className="btn btn-ghost normal-case text-xl">Incedo</span>
+            <a className="btn btn-ghost normal-case text-xl">Incedo</a>
           </Link>
         </div>
         <div className="navbar-end ml-auto">
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
-              <Image src={user?.avatar! ? user.avatar : '/dummy'} alt={user?.username ? user.username : 'dummy'} width={32} height={32} className='avatar rounded-full' />
+              <Image src={user.avatar} alt={user.username} width={32} height={32} className='avatar rounded-full' />
             </label>
             <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 border-2 border-base-200">
               <li>
                 <Link href='/settings'>
-                  <div className='w-full h-fit flex flex-row items-center justify-evenly'>
+                  <a className='w-full h-fit flex flex-row items-center justify-evenly'>
                     <MdSettings size={20} />
                     <span>Settings</span>
-                  </div>
+                  </a>
                 </Link>
               </li>
               <li>

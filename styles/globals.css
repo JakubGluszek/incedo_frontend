@@ -9,14 +9,16 @@
   body {
     @apply text-base-content;
   }
-}
-
-
-@layer components {
-  .btn {
-    @apply rounded-sm;
+  /* Scroll bar */
+  *::-webkit-scrollbar {
+    @apply w-2.5 bg-base-100;
   }
-  .input {
-    @apply rounded-sm;
+  
+  *::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    @apply bg-base-300;
   }
 }

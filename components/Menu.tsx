@@ -1,106 +1,118 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+
 import { MdTextSnippet } from 'react-icons/md';
-import MenuNotes from '../features/notes/NotesMenu';
+
+import NotesMenu from '../features/notes/NotesMenu';
+import SharedNotesMenu from '../features/notes/shared/SharedNotesMenu';
+import NotesTrashMenu from '../features/notes/trash/NotesTrashMenu';
 
 interface Props {
   showMobile: boolean,
   setShowMobile: (showMobile: boolean) => void,
 }
 
-const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
+const Menu: React.FC<Props> = ({ showMobile }) => {
   const router = useRouter();
-  const pathname = router.pathname.split('/')[1]
+  const pathname = router.pathname.split('/')
 
   let menuPageSpecificContent;
-  switch (pathname) {
+  switch (pathname[1]) {
     case 'notes':
-      menuPageSpecificContent = (
-        <>
-          <div className='w-full h-12 hidden md:flex'>
-            <Link href='/'>
-              <span className='text-2xl btn btn-ghost normal-case tracking-widest m-auto'>Notes</span>
-            </Link>
-          </div>
-          <MenuNotes />
-        </>
-      )
+      switch (pathname[2]) {
+        case 'shared':
+          menuPageSpecificContent = <SharedNotesMenu />
+          break;
+        case 'trash':
+          menuPageSpecificContent = <NotesTrashMenu />
+          break;
+        default:
+          menuPageSpecificContent = <NotesMenu />
+          break;
+      }
       break;
   }
 
   const menuContent = (
-    <div className='sticky top-0 w-full h-screen flex flex-col p-4 py-2 border-r-[1px] border-base-200 gap-2 items-center justify-evenly'>
+    <div className='w-full max-w-xs h-full flex flex-col gap-4 items-center justify-evenly'>
+      <Link href='/'>
+        <a className='hidden md:flex btn btn-ghost normal-case text-xl'>Incedo</a>
+      </Link>
       {/* page specific content */}
-      {menuPageSpecificContent
-        ? menuPageSpecificContent
-        : <div className='w-full h-12 hidden md:flex'>
-          <Link href='/'>
-            <span className='text-2xl btn btn-ghost normal-case tracking-widest m-auto'>Home</span>
-          </Link>
-        </div>
-      }
+      {menuPageSpecificContent}
       {/* website navigation */}
       <nav className='w-full h-fit flex flex-col items-center gap-1'>
-        {pathname !== 'notes' &&
+        {pathname[1] !== 'notes' &&
           <Link href='/notes'>
-            <div
-              className='flex flex-row gap-1 items-center link'
-              onClick={() => setShowMobile(false)}
+            <a
+              className='flex flex-row gap-1 items-center link link-hover'
             >
               <MdTextSnippet />
               <span>Notes</span>
-            </div>
+            </a>
           </Link>
         }
-        <Link href='/'>
-          <div
-            className='flex flex-row gap-1 items-center link'
-            onClick={() => setShowMobile(false)}
-          >
-            <span className='link'>snippets</span>
-          </div>
-        </Link>
-        <Link href='/'>
-          <div
-            className='flex flex-row gap-1 items-center link'
-            onClick={() => setShowMobile(false)}
-          >
-            <span className='link'>sessions</span>
-          </div>
-        </Link>
-        <Link href='/'>
-          <div
-            className='flex flex-row gap-1 items-center link'
-            onClick={() => setShowMobile(false)}
-          >
-            <span className='link'>principles</span>
-          </div>
-        </Link>
-        <Link href='/'>
-          <div
-            className='flex flex-row gap-1 items-center link'
-            onClick={() => setShowMobile(false)}
-          >
-            <span className='link'>predictions</span>
-          </div>
-        </Link>
+        {pathname[1] !== 'snippets' &&
+          <Link href='/snippets'>
+            <a
+              className='flex flex-row gap-1 items-center link link-hover'
+            >
+              snippets
+            </a>
+          </Link>
+        }
+        {pathname[1] !== 'sessions' &&
+          <Link href='/sessions'>
+            <a
+              className='flex flex-row gap-1 items-center link link-hover'
+            >
+              sessions
+            </a>
+          </Link>
+        }
+        {pathname[1] !== 'principles' &&
+          <Link href='/principles'>
+            <a
+              className='flex flex-row gap-1 items-center link link-hover'
+            >
+              principles
+            </a>
+          </Link>
+        }
+        {pathname[1] !== 'predictions' &&
+          <Link href='/predictions'>
+            <a
+              className='flex flex-row gap-1 items-center link link-hover'
+            >
+              predictions
+            </a>
+          </Link>
+        }
       </nav >
+      <div className='w-full flex flex-row items-center justify-evenly'>
+        <Link href='/support'>
+          <a className='link link-hover'>support</a>
+        </Link>
+        <Link href='/report_bugs'>
+          <a className='link link-hover'>report bugs</a>
+        </Link>
+      </div>
     </div>
   )
 
   return (
     <>
       {/* large screen menu */}
-      <div className='z-50 w-full md:max-w-xs lg:max-w-sm hidden md:flex flex-col'>
+      <div className='sticky top-0 z-40 w-full md:max-w-xs lg:max-w-sm h-screen hidden md:flex flex-col items-center p-4 py-2 border-r-[1px] border-base-200'>
         {menuContent}
       </div>
       {/* mobile screen menu */}
       <AnimatePresence>
         {showMobile && (
           <motion.div
-            className='z-40 fixed bg-base-100 h-screen w-full py-16 border-r-[1px] border-base-200 md:hidden'
+            className='z-40 fixed w-full h-full flex md:hidden flex-col items-center bg-base-100 py-16 border-r-[1px] border-base-200'
             initial={{ translateX: -window.innerWidth }}
             animate={{ opacity: 1, translateX: 0 }}
             exit={{ translateX: -window.innerWidth }}

@@ -6,6 +6,7 @@ import {
   MultiBackend,
   getBackendOptions
 } from "@minoru/react-dnd-treeview";
+
 import { CustomData } from "../../types";
 import NoteTreeNode from "./NoteTreeNode";
 import CustomDragPreview from "./CustomDragPreview";
@@ -18,6 +19,10 @@ const NoteTree: React.FC = () => {
   return (
     <DndProvider backend={MultiBackend} options={getBackendOptions()}>
       <Tree
+        classes={{
+          container: 'w-full overflow-y-auto max-h-96 flex flex-col py-2 gap-1 relative',
+          listItem: 'w-fit'
+        }}
         tree={treeData}
         rootId={0}
         render={(
