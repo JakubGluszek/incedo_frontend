@@ -1,10 +1,10 @@
 import { DropOptions, NodeModel } from '@minoru/react-dnd-treeview';
 import { useEffect, useState } from 'react';
-import { selectAllNoteFolders } from './noteFoldersSlice';
-import { selectAllNotes } from './notesSlice';
-import { CustomData } from '../../types';
-import { useAppSelector } from '../../hooks/store';
-import { useNotesUpdateRankMutation } from '../../app/services/notes';
+import { selectAllNoteFolders } from '../features/notes/noteFoldersSlice';
+import { selectAllNotes } from '../features/notes/notesSlice';
+import { CustomData } from '../types';
+import { useAppSelector } from './store';
+import { useNotesUpdateRankMutation } from '../app/services/notes';
 
 
 const useNotesTree = (): {
@@ -27,17 +27,19 @@ const useNotesTree = (): {
       text: n.label,
       droppable: true,
       data: {
-        type: 'folder'
+        type: 'folder',
+        rank: n.rank
       }
     })))
 
     nodes.push(...notes.map<NodeModel<CustomData>>(n => ({
       id: `note-${n.id}`,
-      parent: `folder-${n.note_folder_id}`,
+      parent: `folder-${n.parent_id}`,
       text: n.label,
       droppable: false,
       data: {
-        type: 'note'
+        type: 'note',
+        rank: n.rank
       }
     })))
 
@@ -49,9 +51,16 @@ const useNotesTree = (): {
     const fileType = ctx.dragSource?.id.toString().split('-')[0]!
     const id = parseInt(ctx.dragSource?.id.toString().split('-')[1]!)
     const parent_id = ctx.dropTarget?.data?.type === 'folder' ? parseInt(ctx.dropTarget?.id.toString().split('-')[1]!) : null
+    const destination = ctx.destinationIndex!
 
+    if (fileType === 'note' && parent_id === 0) {
+      return;
+    }
+    
+    const update = { id, parent_id, type: fileType, rank: destination }
+    console.log(update)
     try {
-      notesUpdateRank({ id, parent_id, type: fileType, rank: ctx.destinationIndex! }).unwrap()
+      notesUpdateRank(update).unwrap()
     } catch (error) {
       console.log(error)
     }
@@ -60,7 +69,7 @@ const useNotesTree = (): {
   }
 
   return {
-    treeData,
+    treeData: treeData,
     setTreeData,
     handleDrop
   }

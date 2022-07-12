@@ -2,26 +2,8 @@
 
 ## TODO
 
-* [ ] redux store
-  * [*] api
-    * [*] handle csrf token
-  * [x] services
-    * [x] account
-    * [x] notes_folders
-    * [x] notes
-  * [ ] account feature
-    * [x] account reducer
-  * [ ] notes_folders feature
-    * [x] notes folders reducer
-  * [ ] notes feature
-    * [x] notes reducer
-
-* [ ] Themes
-  * [ ] Add custom light / dark theme as default theme
-  * [ ] Handle multiple themes
-
-* [ ] Notes UI
-  * [ ] Sidebar
-    * [ ] Display folders & sub folders
-      * [ ] On click change page to that folder
-  * [ ] Note page
+* [ ] note tree
+  * [ ] drag & drop on trash icon to delete
+  * [ ] improve UX
+  * [ ] improve UI
+  * [ ] provide tooltips

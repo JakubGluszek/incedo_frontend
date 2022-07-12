@@ -71,7 +71,7 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
         </div>
         <div className="navbar-center md:hidden">
           <Link href='/'>
-            <a className="btn btn-ghost normal-case text-xl">Incedo</a>
+            <a className="btn btn-ghost normal-case text-xl text-accent">Incedo</a>
           </Link>
         </div>
         <div className="navbar-end ml-auto">

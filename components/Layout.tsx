@@ -14,14 +14,15 @@ const Layout: React.FC<Props> = ({ children }) => {
     <div className='w-full flex flex-row'>
       {/* menu content */}
       <Menu showMobile={viewMobileSide} setShowMobile={setViewMobileSide} />
-      {/* main content */}
       <div className='grow flex flex-col'>
+        {/* main content */}
         <Header
           viewMenu={viewMobileSide}
           setViewMenu={setViewMobileSide}
         />
-        {children}
+        {viewMobileSide ? null: children}
       </div>
+
     </div>
 
   )

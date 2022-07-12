@@ -37,7 +37,7 @@ export interface Note {
   rank: number,
   created_at: number,
   edited_at: number,
-  note_folder_id: number | null
+  parent_id: number | null
 }
 
 export interface NotesUpdateRank {
@@ -54,5 +54,6 @@ export interface RemoveMulti {
 export type NotesFileType = 'folder' | 'note' | string
 
 export type CustomData = {
-  type: NotesFileType
+  type: NotesFileType,
+  rank: number
 }

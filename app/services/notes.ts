@@ -3,14 +3,14 @@ import { Note, RemoveMulti, NotesUpdateRank } from '../../types';
 
 interface NoteCreate {
   label: string,
-  note_folder_id: number
+  parent_id: number
 }
 
 interface NoteUpdate {
   id: number,
   label?: string,
   body?: string,
-  note_folder_id?: number
+  parent_id?: number
 }
 
 export const notesApi = api.injectEndpoints({

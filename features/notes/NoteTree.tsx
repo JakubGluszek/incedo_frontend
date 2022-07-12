@@ -11,11 +11,11 @@ import { CustomData } from "../../types";
 import NoteTreeNode from "./NoteTreeNode";
 import CustomDragPreview from "./CustomDragPreview";
 import { Placeholder } from "./Placeholder";
-import useNotesTree from "./useNotesTree";
+import useNotesTree from "../../hooks/useNotesTree";
 
 const NoteTree: React.FC = () => {
   const { treeData, handleDrop } = useNotesTree();
-
+  
   return (
     <DndProvider backend={MultiBackend} options={getBackendOptions()}>
       <Tree
