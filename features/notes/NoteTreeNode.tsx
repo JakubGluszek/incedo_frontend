@@ -42,7 +42,7 @@ const NoteTreeNode: React.FC<Props> = (props) => {
       <div>
         <TypeIcon droppable={droppable || false} fileType={data?.type} />
       </div>
-      <div className=''>
+      <div className='w-fit min-w-fit'>
         <span>{props.node.text}</span>
       </div>
     </div>

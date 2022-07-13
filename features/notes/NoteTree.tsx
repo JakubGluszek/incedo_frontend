@@ -19,9 +19,13 @@ const NoteTree: React.FC = () => {
   return (
     <DndProvider backend={MultiBackend} options={getBackendOptions()}>
       <Tree
+        canDrag={(node) => {
+          console.log(node)
+          return false
+        }}
         classes={{
-          container: 'w-full overflow-y-auto max-h-96 flex flex-col py-2 gap-1 relative',
-          listItem: 'w-fit'
+          container: 'w-full overflow-auto bg-base-200 max-h-96 flex flex-col p-2 gap-1 relative rounded-md',
+          listItem: 'w-fit scrollbar-hide'
         }}
         tree={treeData}
         rootId={0}

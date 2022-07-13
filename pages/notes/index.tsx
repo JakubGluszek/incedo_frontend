@@ -26,7 +26,7 @@ const Notes: NextPageWithLayout = () => {
   const router = useRouter();
 
   return (
-    <div className='w-full h-fit flex flex-col gap-2 pb-16 md:pb-0'>
+    <div className='w-full max-w-screen-lg h-fit flex flex-col gap-2 pb-16 md:pb-0'>
       {/* desktop action bar */}
       <div className='z-30 sticky top-16 w-full h-16 hidden md:flex flex-row items-center justify-between p-2 px-8 gap-4 border-b-[1px] border-base-200 bg-base-100'>
         <button

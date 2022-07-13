@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { MdTextSnippet } from 'react-icons/md';
 
 import NotesMenu from '../features/notes/NotesMenu';
 
 interface Props {
-  showMobile: boolean,
-  setShowMobile: (showMobile: boolean) => void,
+  viewMobileMenu: boolean,
+  setViewMobileMenu: (viewMobileMenu: boolean) => void,
 }
 
-const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
+const Menu: React.FC<Props> = ({ viewMobileMenu, setViewMobileMenu }) => {
   const router = useRouter();
   const pathname = router.pathname.split('/')
 
@@ -23,11 +22,11 @@ const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
       break;
   }
 
-  const menuContent = (
-    <div className='grow md:w-64 lg:w-80 flex flex-col gap-4 items-center justify-evenly'>
+  return (
+    <div className='sticky top-0 grow flex flex-col gap-4 items-center justify-evenly'>
       {/* menu header */}
       <Link href='/'>
-        <a className='md:flex btn btn-ghost normal-case text-xl text-accent'>Incedo</a>
+        <a className='hidden md:flex btn btn-ghost normal-case text-xl text-accent'>Incedo</a>
       </Link>
       {/* content based on path */}
       {menuPageSpecificContent}
@@ -37,7 +36,7 @@ const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
           <Link href='/notes'>
             <a
               className='flex flex-row gap-1 items-center link link-hover'
-              onClick={() => setShowMobile(!showMobile)}
+              onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               <MdTextSnippet />
               <span>Notes</span>
@@ -48,7 +47,7 @@ const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
           <Link href='/snippets'>
             <a
               className='flex flex-row gap-1 items-center link link-hover'
-              onClick={() => setShowMobile(!showMobile)}
+              onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               snippets
             </a>
@@ -58,7 +57,7 @@ const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
           <Link href='/sessions'>
             <a
               className='flex flex-row gap-1 items-center link link-hover'
-              onClick={() => setShowMobile(!showMobile)}
+              onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               sessions
             </a>
@@ -68,7 +67,7 @@ const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
           <Link href='/principles'>
             <a
               className='flex flex-row gap-1 items-center link link-hover'
-              onClick={() => setShowMobile(!showMobile)}
+              onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               principles
             </a>
@@ -78,7 +77,7 @@ const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
           <Link href='/predictions'>
             <a
               className='flex flex-row gap-1 items-center link link-hover'
-              onClick={() => setShowMobile(!showMobile)}
+              onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               predictions
             </a>
@@ -90,40 +89,17 @@ const Menu: React.FC<Props> = ({ showMobile, setShowMobile }) => {
         <Link href='/support'>
           <a
             className='link link-hover'
-            onClick={() => setShowMobile(!showMobile)}
+            onClick={() => setViewMobileMenu(!viewMobileMenu)}
           >support</a>
         </Link>
         <Link href='/report_bugs'>
           <a
             className='link link-hover'
-            onClick={() => setShowMobile(!showMobile)}
+            onClick={() => setViewMobileMenu(!viewMobileMenu)}
           >report bugs</a>
         </Link>
       </div>
     </div>
-  )
-
-  return (
-    <>
-      {/* large screen menu */}
-      <div className='sticky top-0 z-40 h-screen hidden md:flex flex-col p-4 py-2 border-r-[1px] border-base-200'>
-        {menuContent}
-      </div>
-      {/* mobile screen menu */}
-      <AnimatePresence>
-        {showMobile && (
-          <motion.div
-            className='z-40 w-full min-h-screen flex md:hidden flex-col bg-base-100 border-r-[1px] border-base-200'
-            initial={{ translateX: -window.innerWidth }}
-            animate={{ opacity: 1, translateX: 0 }}
-            exit={{ translateX: -window.innerWidth }}
-            transition={{ duration: 0.3 }}
-          >
-            {menuContent}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
   )
 };
 
