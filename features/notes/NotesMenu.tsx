@@ -8,7 +8,6 @@ const NotesMenu: React.FC = () => {
         <MdTextSnippet size={24} />
         <span className=''>notes</span>
       </div>
-      {/* <NoteTree /> */}
     </div>
   )
 };
