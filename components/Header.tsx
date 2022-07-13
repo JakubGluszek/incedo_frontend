@@ -31,7 +31,7 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
       message: 'Logged out',
       color: 'green',
       classNames: {
-        root: 'bg-base-100 border-base-200 text-base-content',
+        root: 'notification',
         title: 'text-base-content'
       }
     })
@@ -71,7 +71,7 @@ const Header: React.FC<Props> = ({ viewMenu, setViewMenu }) => {
         </div>
         <div className="navbar-center md:hidden">
           <Link href='/'>
-            <a className="btn btn-ghost normal-case text-xl text-accent">Incedo</a>
+            <a className="btn btn-ghost normal-case text-xl ">Incedo</a>
           </Link>
         </div>
         <div className="navbar-end ml-auto">

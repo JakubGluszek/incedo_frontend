@@ -10,17 +10,18 @@ module.exports = {
     extend: {
       fontFamily: {
         "ubuntuMono": ["Ubuntu Mono"],
+      },
+      transitionProperty: {
+        width: 'width',
+        height: 'height'
       }
     },
-    transitionProperty: {
-      width: 'width',
-      height: 'height'
-    }
   },
   plugins: [
     require("@tailwindcss/typography"),
     require("daisyui"),
-    require('tailwind-scrollbar-hide')
+    require('tailwind-scrollbar-hide'),
+    require("tailwindcss-animate")
   ],
   daisyui: {
     styled: true,

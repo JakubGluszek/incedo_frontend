@@ -6,6 +6,7 @@
   html {
     @apply font-ubuntuMono overflow-x-hidden;
   }
+
   body {
     @apply text-base-content w-full min-h-screen flex;;
   }
@@ -13,6 +14,12 @@
   #__next {
     @apply grow flex;
   }
+
+  /* mantine notifications */
+  .notification {
+    @apply bg-base-100 border-base-200 text-base-content translate-y-16 md:translate-y-0;
+  }
+
   /* Scroll bar */
   *::-webkit-scrollbar {
     @apply w-2.5 bg-base-100;

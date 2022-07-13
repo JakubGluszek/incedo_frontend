@@ -21,7 +21,7 @@ const SignIn: React.FC<Props> = ({ setEnterToken }) => {
         title: 'Success!',
         message: `Email with token sent to ${email}`,
         classNames: {
-          root: 'bg-base-100 border-base-200 text-base-content',
+          root: 'notification translate-y-0',
           title: 'text-base-content'
         }
       })

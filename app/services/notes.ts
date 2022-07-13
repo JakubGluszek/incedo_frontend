@@ -3,14 +3,12 @@ import { Note, RemoveMulti, NotesUpdateRank } from '../../types';
 
 interface NoteCreate {
   label: string,
-  parent_id: number
 }
 
 interface NoteUpdate {
   id: number,
   label?: string,
-  body?: string,
-  parent_id?: number
+  body?: string
 }
 
 export const notesApi = api.injectEndpoints({

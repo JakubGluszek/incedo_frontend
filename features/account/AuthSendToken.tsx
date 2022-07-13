@@ -24,7 +24,7 @@ const SendToken: React.FC<Props> = ({ token, setDisplay }) => {
         message: 'Logged into account',
         color: 'green',
         classNames: {
-          root: 'bg-base-100 border-base-200 text-base-content',
+          root: 'notification translate-y-16',
           title: 'text-base-content'
         }
       })
@@ -35,7 +35,7 @@ const SendToken: React.FC<Props> = ({ token, setDisplay }) => {
         message: 'Token invalid',
         color: 'red',
         classNames: {
-          root: 'bg-base-100 border-base-200 text-base-content',
+          root: 'notification translate-y-0',
           title: 'text-base-content'
         }
       })

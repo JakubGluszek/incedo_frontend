@@ -41,7 +41,7 @@ const Layout: React.FC<Props> = ({ children }) => {
           : null
         }
         {/* page content */}
-        <div className={`${viewMobileMenu ? 'hidden' : 'grow flex'}`}>
+        <div className={`${viewMobileMenu ? 'hidden' : 'grow flex flex-col items-center'}`}>
           {children}
         </div>
       </div>

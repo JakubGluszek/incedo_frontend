@@ -26,12 +26,12 @@ const Menu: React.FC<Props> = ({ viewMobileMenu, setViewMobileMenu }) => {
     <div className='sticky top-0 grow flex flex-col gap-4 items-center justify-evenly'>
       {/* menu header */}
       <Link href='/'>
-        <a className='hidden md:flex btn btn-ghost normal-case text-xl text-accent'>Incedo</a>
+        <a className='hidden md:flex btn btn-ghost normal-case text-xl'>Incedo</a>
       </Link>
       {/* content based on path */}
       {menuPageSpecificContent}
       {/* website navigation */}
-      <nav className='w-full h-fit flex flex-col items-center gap-1'>
+      <nav className='w-full h-fit flex flex-col items-center gap-1 '>
         {pathname[1] !== 'notes' &&
           <Link href='/notes'>
             <a
