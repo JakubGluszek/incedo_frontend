@@ -31,6 +31,12 @@ const accountSlice = createSlice({
         state.user = null
       }
     )
+    builder.addMatcher(
+      accountApi.endpoints.deleteAccount.matchFulfilled,
+      state => {
+        state.user = null
+      }
+    )
   }
 });
 

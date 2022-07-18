@@ -37,6 +37,12 @@ export const accountApi = api.injectEndpoints({
         url: '/account/auth',
         method: 'DELETE'
       })
+    }),
+    deleteAccount: builder.mutation({
+      query: () => ({
+        url: '/account/user',
+        method: 'DELETE'
+      })
     })
   })
 })
@@ -45,5 +51,6 @@ export const {
   useSignInMutation,
   useFetchTokenMutation,
   useFetchUserQuery,
-  useSignOutMutation
+  useSignOutMutation,
+  useDeleteAccountMutation
 } = accountApi;
