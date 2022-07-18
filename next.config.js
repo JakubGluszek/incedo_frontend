@@ -5,7 +5,7 @@ const withPWA = require('next-pwa');
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["192.168.2.56", "https://app.incedo.me"],
+    domains: ["192.168.2.56", "app.incedo.me", "incedo.me"],
   },
 }
 
