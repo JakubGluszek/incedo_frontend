@@ -1,9 +1,19 @@
 /** @type {import('next').NextConfig} */
+
+const withPWA = require('next-pwa');
+
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   images: {
-    domains: ["192.168.2.56"],
+    domains: ["192.168.2.56", "https://app.incedo.me"],
   },
 }
 
-module.exports = nextConfig
+module.exports = withPWA({
+  ...nextConfig,
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
+});

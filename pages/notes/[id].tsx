@@ -1,7 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Modal } from '@mantine/core';
 
 import { MdOutlineArrowBack, MdEdit, MdInfo } from 'react-icons/md';
 import { VscOpenPreview } from 'react-icons/vsc';
@@ -42,7 +41,7 @@ const NotePage: NextPageWithLayout<Props> = ({ id }) => {
         <div className='w-full h-16 flex flex-row items-center justify-between'>
           {/* view details */}
           <button
-            className='btn btn-ghost'
+            className='btn btn-sm btn-ghost'
             onClick={() => setViewDetails(!viewDetails)}
           >
             <MdInfo size={24} />

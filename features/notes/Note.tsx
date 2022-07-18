@@ -56,11 +56,12 @@ const Note: React.FC<Props> = ({ note, preview }) => {
           className='btn btn-sm btn-primary'
           onClick={() => handleUpdateLabel()}
         >
-          save</button>
+          save
+        </button>
       </>
       :
       <span
-        className='cursor-pointer'
+        className='cursor-pointer text-xl'
         onClick={() => setViewUpdateLabel(!viewUpdateLabel)}
       >
         {note.label}
@@ -72,7 +73,7 @@ const Note: React.FC<Props> = ({ note, preview }) => {
   return (
     <div className='grow flex flex-col gap-2'>
       {/* note header */}
-      <div className='w-full h-12 flex flex-row justify-between'>
+      <div className='w-full h-12 flex flex-row items-center justify-between'>
         {noteTitle}
         {canSave &&
           <button
