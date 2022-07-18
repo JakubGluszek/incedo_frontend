@@ -1,7 +1,8 @@
-import { showNotification } from '@mantine/notifications';
-import { useRouter } from 'next/router';
 import React from 'react';
+import { useRouter } from 'next/router';
+import { showNotification } from '@mantine/notifications';
 import { useForm } from 'react-hook-form';
+
 import { useCreateNoteMutation } from '../../app/services/notes';
 
 const NoteCreate: React.FC = () => {
@@ -43,11 +44,12 @@ const NoteCreate: React.FC = () => {
         onSubmit={onSubmit}
       >
         <label className='input-group input-group-sm md:input-group-md'>
-          <span className='label-text md:min-w-[80px]'>Title</span>
+          <span className='label-text'>Title</span>
           <input
+            autoFocus
             className='w-full input input-sm input-bordered'
             type='text'
-            maxLength={32}
+            maxLength={64}
             {...register('label', { required: true })}
           />
         </label>

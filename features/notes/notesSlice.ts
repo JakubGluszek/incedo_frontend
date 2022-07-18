@@ -1,6 +1,6 @@
-import { createSlice, createEntityAdapter, EntityState } from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 
-import { Note, NotesUpdateRank } from '../../types';
+import { Note } from '../../types';
 import { RootState } from '../../app/store';
 import { notesApi } from '../../app/services/notes';
 
@@ -11,12 +11,7 @@ const initialState = notesAdapter.getInitialState();
 const notesSlice = createSlice({
   name: 'notes',
   initialState,
-  reducers: {
-    updateRank: (state: EntityState<Note>, action: { payload: NotesUpdateRank }) => {
-      // 'optimistic' rank update
-      return
-    }
-  },
+  reducers: {},
   extraReducers: builder => {
     builder.addMatcher(
       notesApi.endpoints.fetchNotes.matchFulfilled,

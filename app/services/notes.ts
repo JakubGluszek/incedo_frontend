@@ -1,5 +1,5 @@
 import { api } from './api';
-import { Note, RemoveMulti, NotesUpdateRank } from '../../types';
+import { Note, RemoveMulti } from '../../types';
 
 interface NoteCreate {
   label: string,
@@ -39,7 +39,7 @@ export const notesApi = api.injectEndpoints({
         body: update
       })
     }),
-    removeNote: builder.query<any, number>({
+    removeNote: builder.mutation<any, number>({
       query: id => ({
         url: `/notes/${id}`,
         method: 'DELETE'
@@ -53,13 +53,6 @@ export const notesApi = api.injectEndpoints({
         body: payload
       }),
       transformResponse: (r, meta, arg) => arg.notes_ids
-    }),
-    notesUpdateRank: builder.mutation<any, NotesUpdateRank>({
-      query: update => ({
-        url: '/notes/ranks',
-        method: 'POST',
-        body: update
-      })
     })
   })
 })
@@ -69,7 +62,6 @@ export const {
   useFetchNoteByIdQuery,
   useCreateNoteMutation,
   useUpdateNoteMutation,
-  useRemoveNoteQuery,
+  useRemoveNoteMutation,
   useRemoveMultiNotesMutation,
-  useNotesUpdateRankMutation
 } = notesApi;

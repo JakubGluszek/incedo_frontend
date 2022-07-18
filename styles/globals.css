@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* base */
   html {
     @apply font-ubuntuMono overflow-x-hidden;
   }
@@ -13,6 +14,10 @@
 
   #__next {
     @apply grow flex;
+  }
+
+  svg {
+    @apply min-w-fit min-h-fit;
   }
 
   /* mantine notifications */
@@ -31,5 +36,10 @@
   
   *::-webkit-scrollbar-thumb {
     @apply bg-base-300;
+  }
+
+  /* Text Editor */
+  #text_editor {
+    @apply min-h-full !important;
   }
 }

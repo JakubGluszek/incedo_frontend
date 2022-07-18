@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
+
 import { MdTextSnippet } from 'react-icons/md';
 
 const NotesMenu: React.FC = () => {
