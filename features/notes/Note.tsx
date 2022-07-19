@@ -5,7 +5,7 @@ import { Note } from '../../types';
 import TextPreview from '../../components/TextPreview';
 import { useUpdateNoteMutation } from '../../app/services/notes';
 
-const TextEditor = dynamic(() => import('../../components/TextEditor'), { ssr: false })
+const TextEditor = dynamic(() => import('../../components/TextEditor'), { ssr: false });
 
 interface Props {
   note: Note,

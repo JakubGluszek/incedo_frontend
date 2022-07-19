@@ -1,4 +1,3 @@
-import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -13,19 +12,17 @@ import { useAppSelector } from '../../hooks/store';
 import { selectNoteById } from '../../features/notes/notesSlice';
 import NoteDetails from '../../features/notes/NoteDetails';
 
-interface Props {
-  id: number
-}
 
-const NotePage: NextPageWithLayout<Props> = ({ id }) => {
-  const { isUninitialized, isLoading } = useFetchNoteByIdQuery(id)
+const NotePage: NextPageWithLayout = () => {
+  const router = useRouter();
+  const { id } = router.query
+  const { isUninitialized, isLoading } = useFetchNoteByIdQuery(+id!)
 
-  const note = useAppSelector(state => selectNoteById(state, id))
+  const note = useAppSelector(state => selectNoteById(state, +id!))
 
   const [preview, setPreview] = useState(false);
   const [viewDetails, setViewDetails] = useState(false);
 
-  const router = useRouter();
 
   return (
     <div className='grow w-full max-w-screen-sm xl:max-w-screen-lg flex flex-col gap-2 pb-14 md:pb-0'>
@@ -110,14 +107,6 @@ const NotePage: NextPageWithLayout<Props> = ({ id }) => {
     </div>
   )
 };
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  return {
-    props: {
-      id: context.params?.id
-    },
-  }
-}
 
 NotePage.getLayout = page => (
   <Layout>
