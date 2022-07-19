@@ -27,17 +27,10 @@ const NotePage: NextPageWithLayout<Props> = ({ id }) => {
 
   const router = useRouter();
 
-  if (isUninitialized || isLoading) {
-    return <span>fetching</span>
-  }
-  else if (!note) {
-    return <span>note not found</span>
-  }
-
   return (
     <div className='grow w-full max-w-screen-sm xl:max-w-screen-lg flex flex-col gap-2 pb-14 md:pb-0'>
       {/* desktop action bar */}
-      <div className={`z-40 sticky top-16 w-full h-16 hidden md:flex flex-col gap-4 px-4 border-b-[1px] border-base-200 bg-base-100`}>
+      <div className={`z-40 sticky animate-in slide-in-from-top-12 duration-200 top-16 w-full h-16 hidden md:flex flex-col gap-4 px-4 border-b-[1px] border-base-200 bg-base-100`}>
         <div className='w-full h-16 flex flex-row items-center justify-between'>
           {/* view details */}
           <button
@@ -65,7 +58,7 @@ const NotePage: NextPageWithLayout<Props> = ({ id }) => {
         </div>
       </div>
       {/* mobile action bar */}
-      <div className={`z-30 fixed bottom-0 w-full max-w-screen-sm h-14 md:hidden bg-base-100 border-t-[1px] border-base-200`}>
+      <div className={`z-30 fixed animate-in slide-in-from-bottom-12 duration-200 bottom-0 w-full max-w-screen-sm h-14 md:hidden bg-base-100 border-t-[1px] border-base-200`}>
         <div className='w-full h-14 flex flex-row items-center justify-evenly '>
           <button className='btn btn-ghost btn-circle'
             onClick={() => router.push('/notes')}
@@ -90,16 +83,29 @@ const NotePage: NextPageWithLayout<Props> = ({ id }) => {
       {/* page content */}
       <div className='grow flex flex-col p-4'>
         {/* note details */}
-        <NoteDetails
-          note={note}
-          opened={viewDetails}
-          setOpened={setViewDetails}
-        />
+        {note &&
+          <NoteDetails
+            note={note}
+            opened={viewDetails}
+            setOpened={setViewDetails}
+          />
+        }
         {/* note content */}
-        <Note
-          note={note}
-          preview={preview}
-        />
+        {isUninitialized || isLoading
+          ?
+          <div className='grow flex flex-col gap-2'>
+            <p className='h-12 bg-base-300 animate-pulse rounded-sm'></p>
+            <div className='grow bg-base-300 animate-pulse rounded-sm'></div>
+          </div>
+          :
+          note
+            ?
+            <Note
+              note={note}
+              preview={preview}
+            />
+            : <span>note not found</span>
+        }
       </div>
     </div>
   )

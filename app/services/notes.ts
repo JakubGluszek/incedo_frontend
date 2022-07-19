@@ -53,7 +53,13 @@ export const notesApi = api.injectEndpoints({
         body: payload
       }),
       transformResponse: (r, meta, arg) => arg.notes_ids
-    })
+    }),
+    searchNotes: builder.mutation<Note[], string>({
+      query: (search) => ({
+        url: `/notes?search=${search}`,
+        method: 'GET'
+      })
+    }),
   })
 })
 
@@ -64,4 +70,5 @@ export const {
   useUpdateNoteMutation,
   useRemoveNoteMutation,
   useRemoveMultiNotesMutation,
+  useSearchNotesMutation
 } = notesApi;

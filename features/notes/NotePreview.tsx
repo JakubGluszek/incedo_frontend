@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
 import React from 'react';
+import { useRouter } from 'next/router';
 
 import { Note } from '../../types';
 
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const NotePreview: React.FC<Props> = ({ note }) => {
-  const { id, label, body, created_at, edited_at } = note
+  const { id, label, body } = note
   const router = useRouter();
 
   return (
