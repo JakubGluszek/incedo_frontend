@@ -29,7 +29,8 @@ const Notes: NextPageWithLayout = () => {
   const isDesktop = width >= 768
 
   const handleSearch = async (e: KeyboardEvent) => {
-    if (e.code === 'Enter') {
+    console.log(e)
+    if (e.keyCode === 13) {
       try {
         const data = await searchNotes(search).unwrap()
         setSearchedNotes(data)
