@@ -8,9 +8,9 @@ const NotesMenu: React.FC = () => {
   return (
     <div className='w-full h-fit flex flex-col items-center gap-8'>
       <Link href='/notes'>
-        <div className='flex flex-row items-center text-lg gap-2'>
+        <div className='flex flex-row items-center gap-2 w-40 btn btn-ghost text-lg'>
           <MdTextSnippet size={24} />
-          <span className='link link-hover'>notes</span>
+          <span>notes</span>
         </div>
       </Link>
     </div>

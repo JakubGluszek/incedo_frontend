@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html data-theme="dark">
         <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="manifest" href="/manifest.webmanifest" />
           <link rel="apple-touch-icon" href="/logo_small.png"></link>
           <meta name="theme-color" content="#fff" />

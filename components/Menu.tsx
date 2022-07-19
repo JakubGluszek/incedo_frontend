@@ -31,11 +31,11 @@ const Menu: React.FC<Props> = ({ viewMobileMenu, setViewMobileMenu }) => {
       {/* content based on path */}
       {menuPageSpecificContent}
       {/* website navigation */}
-      <nav className='w-full h-fit flex flex-col items-center gap-1 '>
+      <nav className='w-full h-fit flex flex-col items-center gap-2'>
         {pathname[1] !== 'notes' &&
           <Link href='/notes'>
             <a
-              className='flex flex-row gap-1 items-center link link-hover'
+              className='flex flex-row gap-1 items-center w-40 btn btn-ghost text-lg'
               onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               <MdTextSnippet />
@@ -43,20 +43,10 @@ const Menu: React.FC<Props> = ({ viewMobileMenu, setViewMobileMenu }) => {
             </a>
           </Link>
         }
-        {pathname[1] !== 'snippets' &&
-          <Link href='/snippets'>
-            <a
-              className='flex flex-row gap-1 items-center link link-hover'
-              onClick={() => setViewMobileMenu(!viewMobileMenu)}
-            >
-              snippets
-            </a>
-          </Link>
-        }
         {pathname[1] !== 'sessions' &&
           <Link href='/sessions'>
             <a
-              className='flex flex-row gap-1 items-center link link-hover'
+              className='flex flex-row gap-1 items-center w-40 btn btn-ghost text-lg'
               onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               sessions
@@ -66,20 +56,10 @@ const Menu: React.FC<Props> = ({ viewMobileMenu, setViewMobileMenu }) => {
         {pathname[1] !== 'principles' &&
           <Link href='/principles'>
             <a
-              className='flex flex-row gap-1 items-center link link-hover'
+              className='flex flex-row gap-1 items-center w-40 btn btn-ghost text-lg'
               onClick={() => setViewMobileMenu(!viewMobileMenu)}
             >
               principles
-            </a>
-          </Link>
-        }
-        {pathname[1] !== 'predictions' &&
-          <Link href='/predictions'>
-            <a
-              className='flex flex-row gap-1 items-center link link-hover'
-              onClick={() => setViewMobileMenu(!viewMobileMenu)}
-            >
-              predictions
             </a>
           </Link>
         }
